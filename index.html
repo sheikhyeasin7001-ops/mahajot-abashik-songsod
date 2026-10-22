@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>মহাজোট আবাসিক সংসদ</title>
   <meta name="theme-color" content="#101d35">
+  <title>মহাজোট আবাসিক সংসদ</title>
 
   <style>
     :root {
       --navy: #101d35;
-      --navy-light: #1b2d4d;
+      --navy2: #203656;
       --gold: #d9b45b;
       --cream: #f7f4ec;
-      --white: #ffffff;
-      --text: #202b3b;
+      --white: #fff;
+      --text: #253047;
       --muted: #667085;
-      --border: #e3e7ed;
+      --border: #e0e5ec;
       --green: #19764b;
       --red: #b42318;
     }
@@ -25,45 +25,48 @@
 
     body {
       margin: 0;
-      background: var(--cream);
-      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
         "Noto Sans Bengali", "Hind Siliguri", sans-serif;
+      background: var(--cream);
+      color: var(--text);
     }
 
     button, input, textarea, select { font: inherit; }
-
     button { cursor: pointer; }
+    button:disabled { opacity: .6; cursor: not-allowed; }
 
     .hero {
-      min-height: 230px;
-      padding: 30px 18px;
-      color: white;
       text-align: center;
+      padding: 38px 16px;
+      color: white;
       background:
-        linear-gradient(rgba(8, 19, 38, .84), rgba(8, 19, 38, .91)),
+        linear-gradient(rgba(10, 22, 43, .86), rgba(10, 22, 43, .9)),
         url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Jatiyo_Sangsad_Bhaban_%28cropped%29.jpg/1280px-Jatiyo_Sangsad_Bhaban_%28cropped%29.jpg")
-        center 48% / cover,
+        center / cover,
         var(--navy);
       border-bottom: 4px solid var(--gold);
     }
 
     .hero h1 {
-      margin: 12px 0;
-      font-size: clamp(25px, 5vw, 38px);
       color: var(--gold);
+      font-size: clamp(26px, 5vw, 40px);
+      margin: 12px 0;
     }
 
-    .hero p { margin: 8px 0; }
-
-    .tagline {
-      font-size: 16px;
-      font-weight: 600;
-    }
+    .tagline { font-weight: 700; }
 
     .container {
       width: min(1100px, 94%);
-      margin: 22px auto 50px;
+      margin: 22px auto 45px;
+    }
+
+    .panel, .topbar {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(16,29,53,.04);
     }
 
     .topbar {
@@ -72,30 +75,26 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 18px;
-      padding: 14px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
     }
 
     .user-info {
       display: flex;
       align-items: center;
       gap: 10px;
-      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .avatar {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
-      background: #e7eaf0;
+      background: #e8ebf0;
     }
 
-    .user-name { font-weight: 700; }
     .muted { color: var(--muted); font-size: 13px; }
+    h2, h3 { color: var(--navy); }
+    h2 { margin-top: 0; }
 
     .nav {
       display: flex;
@@ -119,49 +118,34 @@
       font-weight: 700;
     }
 
-    .panel {
-      padding: 20px;
-      margin-bottom: 18px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(16, 29, 53, .04);
-    }
-
-    h2, h3 { color: var(--navy); }
-    h2 { margin-top: 0; }
-
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 14px;
     }
 
     .action-card {
+      background: white;
       padding: 18px;
       border: 1px solid var(--border);
       border-top: 4px solid var(--gold);
       border-radius: 10px;
-      background: #fffefa;
     }
 
-    .action-card h3 { margin-top: 0; }
-
     .primary, .secondary, .danger, .success {
-      padding: 10px 14px;
       border: 0;
       border-radius: 8px;
+      padding: 10px 14px;
       font-weight: 600;
     }
 
     .primary { background: var(--navy); color: white; }
     .secondary { background: #edf0f5; color: var(--navy); }
     .danger { background: #fde8e7; color: var(--red); }
-    .success { background: #e4f5eb; color: var(--green); }
-
-    button:disabled { opacity: .5; cursor: not-allowed; }
+    .success { background: #e1f5e9; color: var(--green); }
 
     input, textarea, select {
+      display: block;
       width: 100%;
       padding: 11px;
       margin: 6px 0 14px;
@@ -171,10 +155,8 @@
       color: var(--text);
     }
 
-    textarea { min-height: 120px; resize: vertical; }
-
+    textarea { min-height: 115px; resize: vertical; }
     label { font-weight: 600; }
-
     .hidden { display: none !important; }
 
     .item {
@@ -185,21 +167,21 @@
       overflow-wrap: anywhere;
     }
 
-    .item h3 { margin: 0 0 8px; }
+    .item h3 { margin: 8px 0; }
 
     .item-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
+      margin: 8px 0;
       color: var(--muted);
       font-size: 13px;
-      margin: 8px 0;
     }
 
     .badge {
       display: inline-block;
-      padding: 4px 9px;
       border-radius: 20px;
+      padding: 4px 9px;
       background: #edf0f5;
       color: var(--navy);
       font-size: 12px;
@@ -218,6 +200,15 @@
       margin-top: 12px;
     }
 
+    .notice {
+      padding: 12px;
+      border-radius: 8px;
+      background: #edf3ff;
+      margin: 12px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .error { background: #fde8e7; color: var(--red); }
     .table-wrap { overflow-x: auto; }
 
     table {
@@ -228,26 +219,12 @@
 
     th, td {
       text-align: left;
-      padding: 11px;
+      padding: 10px;
       border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
 
     th { background: #f1f3f7; color: var(--navy); }
-
-    .notice {
-      padding: 12px;
-      border-radius: 8px;
-      margin: 12px 0;
-      background: #edf3ff;
-      color: var(--navy);
-      overflow-wrap: anywhere;
-    }
-
-    .error {
-      background: #fde8e7;
-      color: var(--red);
-    }
 
     .login-box {
       max-width: 520px;
@@ -264,9 +241,7 @@
 
     @media (max-width: 600px) {
       .panel { padding: 14px; }
-      .nav button { flex: 1 1 42%; }
-      .topbar { align-items: flex-start; }
-      th, td { padding: 8px; }
+      .nav button { flex: 1 1 40%; }
     }
   </style>
 </head>
@@ -280,6 +255,7 @@
   </header>
 
   <main class="container">
+
     <section id="loginSection" class="panel login-box">
       <h2>সংসদে প্রবেশ</h2>
       <p>সংসদের কার্যক্রমে অংশ নিতে Google অ্যাকাউন্ট দিয়ে প্রবেশ করুন।</p>
@@ -288,18 +264,19 @@
     </section>
 
     <div id="appSection" class="hidden">
+
       <section class="topbar">
         <div class="user-info">
           <img id="userPhoto" class="avatar" alt="সদস্যের ছবি">
           <div>
-            <div id="userName" class="user-name">সংসদ-সদস্য</div>
+            <strong id="userName">সংসদ-সদস্য</strong>
             <div id="userEmail" class="muted"></div>
           </div>
         </div>
         <button id="logoutBtn" class="secondary">অধিবেশন থেকে প্রস্থান</button>
       </section>
 
-      <nav class="nav" aria-label="সংসদীয় নেভিগেশন">
+      <nav class="nav">
         <button data-page="home" class="active">অধিবেশন কক্ষ</button>
         <button data-page="proposal">প্রস্তাব উত্থাপন</button>
         <button data-page="complaint">অভিযোগ দাখিল</button>
@@ -312,18 +289,18 @@
       <section id="page-home" class="page">
         <div class="panel">
           <h2>সংসদের অধিবেশন কক্ষ</h2>
-          <p>এখানে প্রস্তাব উত্থাপন, অভিযোগ দাখিল এবং সংসদীয় ভোটে অংশ নেওয়া যাবে।</p>
+          <p>প্রস্তাব উত্থাপন, অভিযোগ দাখিল এবং সংসদীয় ভোটে অংশ নিন।</p>
         </div>
 
         <div class="grid">
           <div class="action-card">
             <h3>নতুন প্রস্তাব</h3>
-            <p>আবাসনের উন্নয়ন বা সদস্যদের কল্যাণে প্রস্তাব উত্থাপন করুন।</p>
+            <p>আবাসনের উন্নয়নে প্রস্তাব উত্থাপন করুন।</p>
             <button class="primary" data-goto="proposal">প্রস্তাব উত্থাপন করুন</button>
           </div>
           <div class="action-card">
             <h3>নতুন অভিযোগ</h3>
-            <p>কোনো সমস্যা বা অনিয়ম সংসদের বিবেচনার জন্য দাখিল করুন।</p>
+            <p>সমস্যা বা অনিয়ম সংসদের বিবেচনার জন্য দাখিল করুন।</p>
             <button class="primary" data-goto="complaint">অভিযোগ দাখিল করুন</button>
           </div>
           <div class="action-card">
@@ -335,7 +312,7 @@
 
         <div class="panel">
           <h2>সাম্প্রতিক সংসদীয় কার্যক্রম</h2>
-          <div id="recentItems"><p class="muted">কার্যক্রম লোড হচ্ছে...</p></div>
+          <div id="recentItems">লোড হচ্ছে...</div>
         </div>
       </section>
 
@@ -377,7 +354,7 @@
         <div class="panel">
           <h2>সম্মাননা প্রস্তাব</h2>
           <form id="honorForm">
-            <label for="honorRecipient">যে সদস্যকে সম্মাননা দেওয়ার প্রস্তাব</label>
+            <label for="honorRecipient">সম্মাননার জন্য সদস্য নির্বাচন</label>
             <select id="honorRecipient" required>
               <option value="">সদস্য নির্বাচন করুন</option>
             </select>
@@ -397,18 +374,18 @@
       <section id="page-members" class="page hidden">
         <div class="panel">
           <h2>সংসদ-সদস্যবৃন্দ</h2>
-          <div id="membersList">সদস্য তালিকা লোড হচ্ছে...</div>
+          <div id="membersList">লোড হচ্ছে...</div>
         </div>
       </section>
 
       <section id="page-admin" class="page hidden">
         <div class="panel">
           <h2>সংসদীয় প্রশাসন</h2>
-          <p>এখান থেকে প্রস্তাবের ভোট গ্রহণ শুরু এবং সম্মাননা প্রস্তাব অনুমোদন করা যাবে।</p>
+          <p>এখান থেকে ভোট গ্রহণ শুরু ও সম্মাননা প্রস্তাব অনুমোদন করা যাবে।</p>
         </div>
         <div class="panel">
           <h2>সাম্প্রতিক সদস্য-প্রবেশ</h2>
-          <div id="adminRecentHistory">প্রবেশ-রেজিস্টার লোড হচ্ছে...</div>
+          <div id="adminRecentHistory">লোড হচ্ছে...</div>
           <button id="adminViewAllHistory" class="secondary">সম্পূর্ণ প্রবেশ-রেজিস্টার দেখুন</button>
         </div>
         <div class="panel">
@@ -420,18 +397,17 @@
       <section id="page-history" class="page hidden">
         <div class="panel">
           <h2>সদস্যদের প্রবেশ-রেজিস্টার</h2>
-          <p class="muted">সর্বশেষ ১০০টি প্রবেশের রেকর্ড দেখানো হবে।</p>
+          <p class="muted">সর্বশেষ ১০০টি প্রবেশের রেকর্ড।</p>
           <button id="refreshHistory" class="secondary">রেজিস্টার হালনাগাদ করুন</button>
           <div id="historyMessage" class="notice hidden"></div>
           <div id="historyTable" class="table-wrap"></div>
         </div>
       </section>
+
     </div>
   </main>
 
-  <footer>
-    মহাজোট আবাসিক সংসদ
-  </footer>
+  <footer>মহাজোট আবাসিক সংসদ</footer>
 
   <script type="module">
     import { initializeApp } from
@@ -460,9 +436,9 @@
       onSnapshot
     } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-    // Firebase Console > Project settings > Your apps থেকে যাচাই করো।
+    // তোমার দেওয়া Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyAdiDFEtiVjUByBvx7nMBcnqr8WQ6F",
+      apiKey: "AIzaSyAdiDFEtiVjUByBvx7nMBcnqr8WQ6fPZvI",
       authDomain: "mohajot-abashik-songsod.firebaseapp.com",
       projectId: "mohajot-abashik-songsod",
       storageBucket: "mohajot-abashik-songsod.firebasestorage.app",
@@ -484,87 +460,30 @@
     let members = [];
     let history = [];
     let stopItemsListener = null;
-    let activePage = "home";
-    let historyLoading = false;
     let lastRecordedLoginUid = null;
+    let historyLoading = false;
 
     const $ = id => document.getElementById(id);
 
     function escapeHTML(value = "") {
-      return String(value).replace(/[&<>"']/g, char => ({
+      return String(value).replace(/[&<>"']/g, ch => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
         '"': "&quot;",
         "'": "&#39;"
-      })[char]);
+      })[ch]);
     }
 
-    function showMessage(id, message, isError = false) {
+    function showMessage(id, message, error = false) {
       const el = $(id);
-      if (!el) return;
       el.textContent = message;
       el.classList.remove("hidden", "error");
-      if (isError) el.classList.add("error");
+      if (error) el.classList.add("error");
     }
 
     function hideMessage(id) {
-      const el = $(id);
-      if (el) el.classList.add("hidden");
-    }
-
-    function showPage(page) {
-      if (page === "admin" && !isAdmin) return;
-      if (page === "history" && !isAdmin) return;
-
-      activePage = page;
-
-      document.querySelectorAll(".page").forEach(el => {
-        el.classList.toggle("hidden", el.id !== `page-${page}`);
-      });
-
-      document.querySelectorAll(".nav button[data-page]").forEach(button => {
-        button.classList.toggle("active", button.dataset.page === page);
-      });
-
-      if (page === "history") loadHistory();
-      if (page === "admin") {
-        renderAdmin();
-        loadHistory();
-      }
-      if (page === "members") renderMembers();
-      if (page === "proposal") renderItems("proposal", "proposalItems");
-      if (page === "complaint") renderItems("complaint", "complaintItems");
-      if (page === "honor") {
-        populateHonorRecipients();
-        renderItems("honor", "honorItems");
-      }
-    }
-
-    function statusText(status) {
-      const map = {
-        pending: "বিবেচনাধীন",
-        voting: "ভোট গ্রহণ চলমান",
-        approved: "অনুমোদিত",
-        closed: "ভোট গ্রহণ সমাপ্ত",
-        passed: "গৃহীত",
-        failed: "নাকচ"
-      };
-      return map[status] || status || "অজ্ঞাত";
-    }
-
-    function statusClass(status) {
-      if (["approved", "passed"].includes(status)) return "approved";
-      if (["rejected", "failed"].includes(status)) return "rejected";
-      return status || "pending";
-    }
-
-    function typeText(type) {
-      return ({
-        proposal: "প্রস্তাব",
-        complaint: "অভিযোগ",
-        honor: "সম্মাননা"
-      })[type] || type;
+      $(id)?.classList.add("hidden");
     }
 
     function formatDate(value) {
@@ -577,12 +496,33 @@
       });
     }
 
+    function statusText(status) {
+      return ({
+        pending: "বিবেচনাধীন",
+        voting: "ভোট গ্রহণ চলমান",
+        approved: "অনুমোদিত",
+        closed: "ভোট গ্রহণ সমাপ্ত",
+        passed: "গৃহীত",
+        failed: "নাকচ"
+      })[status] || status || "অজ্ঞাত";
+    }
+
+    function typeText(type) {
+      return ({
+        proposal: "প্রস্তাব",
+        complaint: "অভিযোগ",
+        honor: "সম্মাননা"
+      })[type] || type;
+    }
+
     async function login() {
       hideMessage("loginMessage");
       $("loginBtn").disabled = true;
+
       try {
         await signInWithPopup(auth, provider);
       } catch (error) {
+        console.error("Login failed:", error);
         showMessage(
           "loginMessage",
           `প্রবেশ করা যায়নি: ${error.code || error.message}`,
@@ -597,13 +537,12 @@
       try {
         await signOut(auth);
       } catch (error) {
-        alert("প্রস্থান করা যায়নি: " + (error.code || error.message));
+        alert(`প্রস্থান করা যায়নি: ${error.code || error.message}`);
       }
     }
 
     async function ensureMember(user) {
-      const memberRef = doc(db, "members", user.uid);
-      await setDoc(memberRef, {
+      await setDoc(doc(db, "members", user.uid), {
         uid: user.uid,
         name: user.displayName || "নামহীন সদস্য",
         email: user.email || "",
@@ -627,69 +566,37 @@
 
         lastRecordedLoginUid = user.uid;
       } catch (error) {
-        console.error("Login history write failed:", error);
-        if (isAdmin) {
-          showMessage(
-            "historyMessage",
-            `প্রবেশের রেকর্ড লেখা যায়নি: ${error.code || error.message}`,
-            true
-          );
-        }
+        console.error("Login history failed:", error);
       }
-    }
-
-    function startItemsListener() {
-      if (stopItemsListener) stopItemsListener();
-
-      const q = query(collection(db, "items"), orderBy("createdAt", "desc"));
-
-      stopItemsListener = onSnapshot(q, snapshot => {
-        items = snapshot.docs.map(itemDoc => ({
-          id: itemDoc.id,
-          ...itemDoc.data()
-        }));
-
-        renderHome();
-        renderItems("proposal", "proposalItems");
-        renderItems("complaint", "complaintItems");
-        renderItems("honor", "honorItems");
-
-        if (isAdmin) renderAdmin();
-      }, error => {
-        console.error("Items listener failed:", error);
-        $("recentItems").textContent =
-          `কার্যক্রম লোড করা যায়নি: ${error.code || error.message}`;
-      });
     }
 
     async function loadMembers() {
       try {
-        const snapshot = await getDocs(collection(db, "members"));
-        members = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+        const snap = await getDocs(collection(db, "members"));
+        members = snap.docs.map(d => ({ id: d.id, ...d.data() }));
         renderMembers();
         populateHonorRecipients();
       } catch (error) {
-        console.error("Members load failed:", error);
+        console.error(error);
         $("membersList").textContent =
           `সদস্যদের তথ্য লোড করা যায়নি: ${error.code || error.message}`;
       }
     }
 
     function renderMembers() {
-      const el = $("membersList");
       if (!members.length) {
-        el.textContent = "এখনো কোনো সদস্যের তথ্য পাওয়া যায়নি।";
+        $("membersList").textContent = "কোনো সদস্যের তথ্য পাওয়া যায়নি।";
         return;
       }
 
-      el.innerHTML = members.map(member => `
+      $("membersList").innerHTML = members.map(m => `
         <div class="item">
           <div class="user-info">
-            <img class="avatar" src="${escapeHTML(member.photoURL || "")}"
-              alt="" onerror="this.style.visibility='hidden'">
+            <img class="avatar" src="${escapeHTML(m.photoURL || "")}"
+                 alt="" onerror="this.style.visibility='hidden'">
             <div>
-              <strong>${escapeHTML(member.name || "নামহীন সদস্য")}</strong>
-              <div class="muted">${escapeHTML(member.email || "")}</div>
+              <strong>${escapeHTML(m.name || "নামহীন সদস্য")}</strong>
+              <div class="muted">${escapeHTML(m.email || "")}</div>
             </div>
           </div>
         </div>
@@ -700,105 +607,88 @@
       const select = $("honorRecipient");
       if (!select) return;
 
-      const currentValue = select.value;
+      const oldValue = select.value;
       select.innerHTML = '<option value="">সদস্য নির্বাচন করুন</option>';
 
-      members.forEach(member => {
-        if (!member.uid || member.uid === currentUser?.uid) return;
+      members.forEach(m => {
+        if (!m.uid || m.uid === currentUser?.uid) return;
         const option = document.createElement("option");
-        option.value = member.uid;
-        option.textContent = member.name || member.email || "নামহীন সদস্য";
+        option.value = m.uid;
+        option.textContent = m.name || m.email || "নামহীন সদস্য";
         select.appendChild(option);
       });
 
-      if (members.some(m => m.uid === currentValue)) {
-        select.value = currentValue;
+      if ([...select.options].some(o => o.value === oldValue)) {
+        select.value = oldValue;
       }
     }
 
-    function renderHome() {
-      const visible = items.filter(item =>
-        item.type !== "honor" ||
-        isAdmin ||
-        item.status === "approved" ||
-        item.authorUid === currentUser?.uid
-      ).slice(0, 6);
+    function startItemsListener() {
+      if (stopItemsListener) stopItemsListener();
 
-      $("recentItems").innerHTML = visible.length
-        ? visible.map(item => itemHTML(item, false)).join("")
-        : "<p class='muted'>এখনো কোনো সংসদীয় কার্যক্রম নেই।</p>";
+      const q = query(
+        collection(db, "items"),
+        orderBy("createdAt", "desc")
+      );
+
+      stopItemsListener = onSnapshot(q, snap => {
+        items = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        renderHome();
+        renderItems("proposal", "proposalItems");
+        renderItems("complaint", "complaintItems");
+        renderItems("honor", "honorItems");
+        if (isAdmin) renderAdmin();
+      }, error => {
+        console.error("Items listener:", error);
+        $("recentItems").textContent =
+          `কার্যক্রম লোড করা যায়নি: ${error.code || error.message}`;
+      });
     }
 
-    function itemHTML(item, includeActions = true) {
+    function itemHTML(item, actionsEnabled = true) {
       const ownVote = item.votes?.[currentUser?.uid];
-      const voteEntries = Object.values(item.votes || {});
-      const yes = voteEntries.filter(v => v === "yes").length;
-      const no = voteEntries.filter(v => v === "no").length;
-      const abstain = voteEntries.filter(v => v === "abstain").length;
-
-      let votingInfo = "";
-      if (item.status === "voting" || item.status === "closed") {
-        votingInfo = `
-          <p>পক্ষে: <strong>${yes}</strong> |
-          বিপক্ষে: <strong>${no}</strong> |
-          ভোটদানে বিরত: <strong>${abstain}</strong></p>
-        `;
-      }
+      const votes = Object.values(item.votes || {});
+      const yes = votes.filter(v => v === "yes").length;
+      const no = votes.filter(v => v === "no").length;
+      const abstain = votes.filter(v => v === "abstain").length;
 
       let actions = "";
 
-      if (includeActions && item.status === "voting" && !ownVote) {
+      if (actionsEnabled && item.status === "voting" && !ownVote) {
         actions = `
           <div class="actions">
-            <button class="success" data-vote="${item.id}" data-choice="yes">
-              প্রস্তাবের পক্ষে
-            </button>
-            <button class="danger" data-vote="${item.id}" data-choice="no">
-              প্রস্তাবের বিপক্ষে
-            </button>
-            <button class="secondary" data-vote="${item.id}" data-choice="abstain">
-              ভোটদানে বিরত
-            </button>
+            <button class="success" data-vote="${item.id}" data-choice="yes">প্রস্তাবের পক্ষে</button>
+            <button class="danger" data-vote="${item.id}" data-choice="no">প্রস্তাবের বিপক্ষে</button>
+            <button class="secondary" data-vote="${item.id}" data-choice="abstain">ভোটদানে বিরত</button>
           </div>`;
-      } else if (includeActions && ownVote) {
+      } else if (actionsEnabled && ownVote) {
         actions = `<p class="muted">আপনার ভোট: ${
-          ownVote === "yes" ? "পক্ষে" :
-          ownVote === "no" ? "বিপক্ষে" : "বিরত"
+          ownVote === "yes" ? "পক্ষে" : ownVote === "no" ? "বিপক্ষে" : "বিরত"
         }</p>`;
       }
 
-      if (includeActions && isAdmin && item.type === "honor" &&
-          item.status === "pending") {
-        actions += `
-          <div class="actions">
-            <button class="success" data-approve-honor="${item.id}">
-              সম্মাননা অনুমোদন করুন
-            </button>
-          </div>`;
+      if (actionsEnabled && isAdmin &&
+          item.type === "honor" && item.status === "pending") {
+        actions += `<div class="actions">
+          <button class="success" data-approve="${item.id}">সম্মাননা অনুমোদন করুন</button>
+        </div>`;
       }
 
-      if (includeActions && isAdmin &&
+      if (actionsEnabled && isAdmin &&
           ["proposal", "complaint"].includes(item.type) &&
           item.status === "pending") {
-        actions += `
-          <div class="actions">
-            <button class="primary" data-start-vote="${item.id}">
-              ভোট গ্রহণ শুরু করুন (১২ ঘণ্টা)
-            </button>
-          </div>`;
+        actions += `<div class="actions">
+          <button class="primary" data-start="${item.id}">ভোট গ্রহণ শুরু করুন (১২ ঘণ্টা)</button>
+        </div>`;
       }
 
-      const recipient = item.recipientUid
-        ? members.find(m => m.uid === item.recipientUid)
-        : null;
+      const recipient = members.find(m => m.uid === item.recipientUid);
 
       return `
         <article class="item">
           <div class="item-meta">
             <span class="badge">${escapeHTML(typeText(item.type))}</span>
-            <span class="badge ${statusClass(item.status)}">
-              ${escapeHTML(statusText(item.status))}
-            </span>
+            <span class="badge ${escapeHTML(item.status || "pending")}">${escapeHTML(statusText(item.status))}</span>
           </div>
           <h3>${escapeHTML(item.title || "শিরোনামহীন")}</h3>
           <p>${escapeHTML(item.description || "").replace(/\n/g, "<br>")}</p>
@@ -807,7 +697,9 @@
             <span>তারিখ: ${escapeHTML(formatDate(item.createdAt))}</span>
           </div>
           ${recipient ? `<p>সম্মাননা প্রাপক: <strong>${escapeHTML(recipient.name || recipient.email)}</strong></p>` : ""}
-          ${votingInfo}
+          ${item.status === "voting" || item.status === "closed"
+            ? `<p>পক্ষে: <strong>${yes}</strong> | বিপক্ষে: <strong>${no}</strong> | বিরত: <strong>${abstain}</strong></p>`
+            : ""}
           ${item.status === "closed" && item.result
             ? `<p><strong>চূড়ান্ত সিদ্ধান্ত: ${escapeHTML(statusText(item.result))}</strong></p>`
             : ""}
@@ -816,23 +708,32 @@
       `;
     }
 
+    function renderHome() {
+      const visible = items.filter(i =>
+        i.type !== "honor" || isAdmin ||
+        i.status === "approved" || i.authorUid === currentUser?.uid ||
+        i.recipientUid === currentUser?.uid
+      ).slice(0, 6);
+
+      $("recentItems").innerHTML = visible.length
+        ? visible.map(i => itemHTML(i, false)).join("")
+        : "<p class='muted'>এখনো কোনো সংসদীয় কার্যক্রম নেই।</p>";
+    }
+
     function renderItems(type, targetId) {
       const target = $(targetId);
       if (!target || !currentUser) return;
 
-      const filtered = items.filter(item => {
-        if (item.type !== type) return false;
-        if (type === "honor") {
-          return isAdmin ||
-            item.status === "approved" ||
-            item.authorUid === currentUser.uid ||
-            item.recipientUid === currentUser.uid;
-        }
-        return true;
+      const filtered = items.filter(i => {
+        if (i.type !== type) return false;
+        if (type !== "honor") return true;
+        return isAdmin || i.status === "approved" ||
+          i.authorUid === currentUser.uid ||
+          i.recipientUid === currentUser.uid;
       });
 
       target.innerHTML = filtered.length
-        ? filtered.map(item => itemHTML(item)).join("")
+        ? filtered.map(i => itemHTML(i)).join("")
         : "<p class='muted'>এই মুহূর্তে কোনো রেকর্ড নেই।</p>";
     }
 
@@ -844,44 +745,44 @@
 
       const title = $(`${prefix}Title`).value.trim();
       const description = $(`${prefix}Description`).value.trim();
+      const button = event.submitter;
 
       if (!title || !description) {
         alert("শিরোনাম ও বিবরণ পূরণ করুন।");
         return;
       }
 
-      const data = {
-        title,
-        description,
-        type,
-        authorUid: currentUser.uid,
-        authorName: currentUser.displayName || currentUser.email || "সদস্য",
-        authorEmail: currentUser.email || "",
-        recipientUid: type === "honor" ? $("honorRecipient").value : null,
-        status: "pending",
-        votes: {},
-        createdAt: serverTimestamp(),
-        votingStartedAt: null,
-        votingEndsAt: null,
-        result: null
-      };
+      const recipientUid = type === "honor"
+        ? $("honorRecipient").value : null;
 
-      if (type === "honor" && !data.recipientUid) {
+      if (type === "honor" && !recipientUid) {
         alert("সম্মাননা প্রাপক নির্বাচন করুন।");
         return;
       }
 
-      const button = event.submitter;
       if (button) button.disabled = true;
 
       try {
-        await addDoc(collection(db, "items"), data);
+        await addDoc(collection(db, "items"), {
+          title,
+          description,
+          type,
+          authorUid: currentUser.uid,
+          authorName: currentUser.displayName || currentUser.email || "সদস্য",
+          authorEmail: currentUser.email || "",
+          recipientUid,
+          status: "pending",
+          votes: {},
+          createdAt: serverTimestamp(),
+          votingStartedAt: null,
+          votingEndsAt: null,
+          result: null
+        });
+
         event.target.reset();
         alert("সংসদীয় রেকর্ড সফলভাবে দাখিল হয়েছে।");
-        showPage(type === "proposal" ? "proposal" :
-          type === "complaint" ? "complaint" : "honor");
       } catch (error) {
-        console.error("Submit failed:", error);
+        console.error(error);
         alert(`দাখিল করা যায়নি: ${error.code || error.message}`);
       } finally {
         if (button) button.disabled = false;
@@ -890,8 +791,7 @@
 
     async function startVote(id) {
       if (!isAdmin) return;
-
-      const item = items.find(x => x.id === id);
+      const item = items.find(i => i.id === id);
       if (!item || item.status !== "pending") return;
 
       const started = new Date();
@@ -910,18 +810,19 @@
     }
 
     async function castVote(id, choice) {
-      const item = items.find(x => x.id === id);
+      const item = items.find(i => i.id === id);
       if (!item || item.status !== "voting") return;
+
       if (item.votes?.[currentUser.uid]) {
         alert("আপনি ইতিমধ্যে ভোট দিয়েছেন।");
         return;
       }
 
-      const endDate = item.votingEndsAt?.toDate
+      const ends = item.votingEndsAt?.toDate
         ? item.votingEndsAt.toDate()
         : new Date(item.votingEndsAt);
 
-      if (Date.now() >= endDate.getTime()) {
+      if (Date.now() >= ends.getTime()) {
         alert("ভোট গ্রহণের সময়সীমা শেষ হয়েছে।");
         return;
       }
@@ -937,6 +838,7 @@
 
     async function approveHonor(id) {
       if (!isAdmin) return;
+
       try {
         await updateDoc(doc(db, "items", id), {
           status: "approved",
@@ -954,39 +856,39 @@
       for (const item of items) {
         if (item.status !== "voting" || !item.votingEndsAt) continue;
 
-        const endDate = item.votingEndsAt.toDate
+        const ends = item.votingEndsAt.toDate
           ? item.votingEndsAt.toDate()
           : new Date(item.votingEndsAt);
 
-        if (Date.now() < endDate.getTime()) continue;
+        if (Date.now() < ends.getTime()) continue;
 
         const votes = Object.values(item.votes || {});
         const yes = votes.filter(v => v === "yes").length;
         const no = votes.filter(v => v === "no").length;
-        const result = yes > no ? "passed" : "failed";
+        const abstain = votes.filter(v => v === "abstain").length;
 
         try {
           await updateDoc(doc(db, "items", item.id), {
             status: "closed",
-            result,
+            result: yes > no ? "passed" : "failed",
             closedAt: serverTimestamp(),
-            finalVotes: { yes, no, abstain: votes.filter(v => v === "abstain").length }
+            finalVotes: { yes, no, abstain }
           });
         } catch (error) {
-          console.error("Vote closure failed:", item.id, error);
+          console.error("Vote closure failed:", error);
         }
       }
     }
 
     function renderAdmin() {
       if (!isAdmin) return;
-      const target = $("adminItems");
-      const pending = items.filter(item =>
-        item.status === "pending" || item.status === "voting"
+
+      const pending = items.filter(i =>
+        i.status === "pending" || i.status === "voting"
       );
 
-      target.innerHTML = pending.length
-        ? pending.map(item => itemHTML(item)).join("")
+      $("adminItems").innerHTML = pending.length
+        ? pending.map(i => itemHTML(i)).join("")
         : "<p class='muted'>কোনো বিচারাধীন বা চলমান কার্যক্রম নেই।</p>";
 
       autoCloseExpiredVotes();
@@ -995,8 +897,7 @@
     async function loadHistory() {
       if (!isAdmin || historyLoading) return;
       historyLoading = true;
-
-      $("historyTable").innerHTML = "<p>প্রবেশ-রেজিস্টার লোড হচ্ছে...</p>";
+      $("historyTable").textContent = "প্রবেশ-রেজিস্টার লোড হচ্ছে...";
 
       try {
         const q = query(
@@ -1005,16 +906,16 @@
           limit(100)
         );
 
-        const snapshot = await getDocs(q);
-        history = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+        const snap = await getDocs(q);
+        history = snap.docs.map(d => ({ id: d.id, ...d.data() }));
         renderHistory();
         hideMessage("historyMessage");
       } catch (error) {
         console.error("History read failed:", error);
-        $("historyTable").innerHTML = "";
+        $("historyTable").textContent = "";
         showMessage(
           "historyMessage",
-          `প্রবেশ-রেজিস্টার পড়া যায়নি: ${error.code || error.message}. Firestore Rules-এ admin read permission যাচাই করুন।`,
+          `প্রবেশ-রেজিস্টার পড়া যায়নি: ${error.code || error.message}. Firestore Rules যাচাই করুন।`,
           true
         );
         $("adminRecentHistory").textContent =
@@ -1030,30 +931,56 @@
       $("adminRecentHistory").innerHTML = recent.length
         ? `<div class="table-wrap"><table>
             <thead><tr><th>সদস্য</th><th>প্রবেশের সময়</th></tr></thead>
-            <tbody>${recent.map(row => `
+            <tbody>${recent.map(r => `
               <tr>
-                <td>${escapeHTML(row.name || "নামহীন")}<br>
-                  <span class="muted">${escapeHTML(row.email || "")}</span>
-                </td>
-                <td>${escapeHTML(formatDate(row.loginAt))}</td>
+                <td>${escapeHTML(r.name || "নামহীন")}<br>
+                    <span class="muted">${escapeHTML(r.email || "")}</span></td>
+                <td>${escapeHTML(formatDate(r.loginAt))}</td>
               </tr>`).join("")}
             </tbody></table></div>`
         : "<p class='muted'>এখনো কোনো প্রবেশ-রেকর্ড নেই।</p>";
 
       $("historyTable").innerHTML = history.length
         ? `<table>
-            <thead>
-              <tr><th>সদস্য</th><th>ইমেইল</th><th>প্রবেশের সময়</th></tr>
-            </thead>
-            <tbody>${history.map(row => `
+            <thead><tr><th>সদস্য</th><th>ইমেইল</th><th>প্রবেশের সময়</th></tr></thead>
+            <tbody>${history.map(r => `
               <tr>
-                <td>${escapeHTML(row.name || "নামহীন")}</td>
-                <td>${escapeHTML(row.email || "")}</td>
-                <td>${escapeHTML(formatDate(row.loginAt))}</td>
+                <td>${escapeHTML(r.name || "নামহীন")}</td>
+                <td>${escapeHTML(r.email || "")}</td>
+                <td>${escapeHTML(formatDate(r.loginAt))}</td>
               </tr>`).join("")}
             </tbody>
           </table>`
         : "<p class='muted'>এখনো কোনো প্রবেশ-রেকর্ড নেই।</p>";
+    }
+
+    function showPage(page) {
+      if ((page === "admin" || page === "history") && !isAdmin) return;
+
+      document.querySelectorAll(".page").forEach(p => {
+        p.classList.toggle("hidden", p.id !== `page-${page}`);
+      });
+
+      document.querySelectorAll(".nav [data-page]").forEach(b => {
+        b.classList.toggle("active", b.dataset.page === page);
+      });
+
+      if (page === "proposal") renderItems("proposal", "proposalItems");
+      if (page === "complaint") renderItems("complaint", "complaintItems");
+
+      if (page === "honor") {
+        populateHonorRecipients();
+        renderItems("honor", "honorItems");
+      }
+
+      if (page === "members") renderMembers();
+
+      if (page === "admin") {
+        renderAdmin();
+        loadHistory();
+      }
+
+      if (page === "history") loadHistory();
     }
 
     $("loginBtn").addEventListener("click", login);
@@ -1069,48 +996,47 @@
       button.addEventListener("click", () => showPage(button.dataset.goto));
     });
 
-    $("proposalForm").addEventListener("submit", event =>
-      submitItem(event, "proposal"));
-    $("complaintForm").addEventListener("submit", event =>
-      submitItem(event, "complaint"));
-    $("honorForm").addEventListener("submit", event =>
-      submitItem(event, "honor"));
+    $("proposalForm").addEventListener("submit", e => submitItem(e, "proposal"));
+    $("complaintForm").addEventListener("submit", e => submitItem(e, "complaint"));
+    $("honorForm").addEventListener("submit", e => submitItem(e, "honor"));
 
-    document.addEventListener("click", event => {
-      const voteButton = event.target.closest("[data-vote]");
-      if (voteButton) {
-        castVote(voteButton.dataset.vote, voteButton.dataset.choice);
+    document.addEventListener("click", e => {
+      const vote = e.target.closest("[data-vote]");
+      if (vote) {
+        castVote(vote.dataset.vote, vote.dataset.choice);
         return;
       }
 
-      const startButton = event.target.closest("[data-start-vote]");
-      if (startButton) {
-        startVote(startButton.dataset.startVote);
+      const start = e.target.closest("[data-start]");
+      if (start) {
+        startVote(start.dataset.start);
         return;
       }
 
-      const approveButton = event.target.closest("[data-approve-honor]");
-      if (approveButton) {
-        approveHonor(approveButton.dataset.approveHonor);
-      }
+      const approve = e.target.closest("[data-approve]");
+      if (approve) approveHonor(approve.dataset.approve);
     });
 
     onAuthStateChanged(auth, async user => {
       currentUser = user;
       isAdmin = Boolean(
-        user && user.email &&
+        user?.email &&
         user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()
       );
 
       $("loginSection").classList.toggle("hidden", Boolean(user));
       $("appSection").classList.toggle("hidden", !user);
+      $("adminNav").classList.toggle("hidden", !isAdmin);
+      $("historyNav").classList.toggle("hidden", !isAdmin);
 
       if (!user) {
         lastRecordedLoginUid = null;
+
         if (stopItemsListener) {
           stopItemsListener();
           stopItemsListener = null;
         }
+
         items = [];
         members = [];
         history = [];
@@ -1121,13 +1047,10 @@
       $("userEmail").textContent = user.email || "";
       $("userPhoto").src = user.photoURL || "";
 
-      $("adminNav").classList.toggle("hidden", !isAdmin);
-      $("historyNav").classList.toggle("hidden", !isAdmin);
-
       try {
         await ensureMember(user);
       } catch (error) {
-        console.error("Member profile write failed:", error);
+        console.error("Member profile error:", error);
       }
 
       await recordLogin(user);
