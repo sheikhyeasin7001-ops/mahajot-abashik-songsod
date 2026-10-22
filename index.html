@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="bn">
 <head>
@@ -7,117 +8,250 @@
 <title>মহাজোট আবাসিক সংসদ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#0c1422;--panel:#172338;--panel2:#202f47;--gold:#e8bd67;--cream:#f7f0df;--muted:#aab5c7;--line:#34445d;--red:#d97c76;--green:#7ec8a0}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top,#26344d 0,var(--bg) 56%);color:var(--cream);font-family:'Hind Siliguri',sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0;border-radius:11px;padding:11px 15px;background:var(--gold);color:#182337;font-weight:700;transition:transform .15s,opacity .15s}button:hover{transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}.secondary{background:#26364e;color:var(--cream);border:1px solid var(--line)}.danger{background:#492b35;color:#ffd6d2;border:1px solid #74404b}.small{padding:7px 10px;font-size:14px}.hidden{display:none!important}
-header{border-bottom:1px solid var(--line);padding:22px 18px 18px;text-align:center;background:#0b1220aa;position:relative}.seal{font-size:34px;line-height:1.2}h1{font-size:clamp(26px,5vw,43px);color:var(--gold);margin:5px 0}header p{margin:0;color:var(--muted)}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:1080px;margin:18px auto 0;padding:0 4%}.brand-mini{font-weight:700;color:var(--gold)}main{width:min(1080px,92%);margin:25px auto 45px}.panel{background:#172338ed;border:1px solid var(--line);border-radius:18px;padding:21px;margin-bottom:17px;box-shadow:0 14px 38px #0002}.panel h2{color:var(--gold);margin:0 0 12px;font-size:23px}.panel h3{margin:8px 0}.muted{color:var(--muted)}.smalltext{font-size:13px;color:var(--muted);line-height:1.5}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}.tile{background:#202e44;border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0}.emoji{font-size:28px}.tile p{line-height:1.5}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#202e44;border:1px solid var(--line);border-radius:13px;padding:13px;text-align:center}.stat strong{display:block;font-size:25px;color:var(--gold)}.stat span{font-size:13px;color:var(--muted)}input,textarea,select{width:100%;padding:11px 12px;border:1px solid var(--line);background:#0f1929;color:var(--cream);border-radius:10px;margin:5px 0 12px;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--gold)}textarea{min-height:90px;resize:vertical}label{font-size:14px;color:#d8dfeb}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{min-width:0}.row .grow{flex:1}.notice{padding:12px;border-radius:11px;background:#25364c;color:#c6d2e3;white-space:pre-wrap;line-height:1.5}.notice.error{background:#492b35;color:#ffd6d2}.notice.success{background:#203d35;color:#c7f1d8}.badge{display:inline-block;padding:3px 10px;border:1px solid var(--line);border-radius:99px;font-size:12px;color:var(--gold)}.tabs{display:flex;gap:8px;overflow:auto;margin:0 0 17px;padding-bottom:3px}.tabs button{white-space:nowrap;flex-shrink:0}.tabs button.active{background:var(--gold);color:#182337}.section{display:none}.section.active{display:block}.entry{padding:13px 0;border-bottom:1px solid var(--line)}.entry:last-child{border-bottom:0}.entry-title{font-weight:700}.entry-meta{font-size:12px;color:var(--muted);margin-top:3px}.entry-body{white-space:pre-wrap;line-height:1.5;margin:7px 0}.empty{color:var(--muted);padding:18px;text-align:center;border:1px dashed var(--line);border-radius:12px}.profile{display:flex;gap:12px;align-items:center}.avatar{height:46px;width:46px;display:grid;place-items:center;background:#35445d;border-radius:14px;font-size:24px;flex-shrink:0}.footer{text-align:center;padding:22px;color:var(--muted);font-size:13px}.loginbox{max-width:580px;margin:30px auto}.loginbox .panel{padding:clamp(20px,5vw,32px)}.adminflag{color:var(--green)}.subheading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}.subheading h2{margin:0}.vote-option{display:flex;gap:9px;align-items:center;margin:8px 0}.vote-option input{width:auto;margin:0}.vote-option label{flex:1}.member-email{overflow-wrap:anywhere}.small-action{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}@media(max-width:600px){.panel{padding:16px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat strong{font-size:21px}.topbar{margin-top:12px}.hide-mobile{display:none}}
+:root {
+  --bg:#0c1422; --panel:#172338; --gold:#e8bd67;
+  --cream:#f7f0df; --muted:#aab5c7; --line:#34445d;
+}
+* { box-sizing:border-box }
+body {
+  margin:0; background:radial-gradient(ellipse at top,#26344d 0,var(--bg) 56%);
+  color:var(--cream); font-family:'Hind Siliguri',sans-serif; min-height:100vh;
+}
+button,input,textarea { font:inherit }
+button {
+  cursor:pointer; border:0; border-radius:11px; padding:11px 15px;
+  background:var(--gold); color:#182337; font-weight:700;
+}
+button:disabled { opacity:.45; cursor:not-allowed }
+.secondary { background:#26364e; color:var(--cream); border:1px solid var(--line) }
+.danger { background:#492b35; color:#ffd6d2 }
+.small { padding:7px 10px; font-size:14px }
+.hidden { display:none!important }
+header {
+  border-bottom:1px solid var(--line); padding:22px 18px 18px;
+  text-align:center; background:#0b1220aa;
+}
+.seal { font-size:34px }
+h1 { font-size:clamp(26px,5vw,43px); color:var(--gold); margin:5px 0 }
+header p { margin:0; color:var(--muted) }
+.topbar {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; max-width:1080px; margin:18px auto 0; padding:0 4%;
+}
+.brand-mini { font-weight:700; color:var(--gold) }
+main { width:min(1080px,92%); margin:25px auto 45px }
+.panel {
+  background:#172338ed; border:1px solid var(--line); border-radius:18px;
+  padding:21px; margin-bottom:17px; box-shadow:0 14px 38px #0002;
+}
+.panel h2 { color:var(--gold); margin:0 0 12px; font-size:23px }
+.muted { color:var(--muted) }
+.smalltext { font-size:13px; color:var(--muted); line-height:1.5 }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:13px }
+.tile { background:#202e44; border:1px solid var(--line); border-radius:14px; padding:17px }
+.emoji { font-size:28px }
+.stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
+.stat { background:#202e44; border:1px solid var(--line); border-radius:13px; padding:13px; text-align:center }
+.stat strong { display:block; font-size:25px; color:var(--gold) }
+.stat span { font-size:13px; color:var(--muted) }
+input,textarea {
+  width:100%; padding:11px 12px; border:1px solid var(--line);
+  background:#0f1929; color:var(--cream); border-radius:10px; margin:5px 0 12px;
+}
+textarea { min-height:90px; resize:vertical }
+label { font-size:14px; color:#d8dfeb }
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+.notice { padding:12px; border-radius:11px; background:#25364c; color:#c6d2e3; white-space:pre-wrap }
+.notice.error { background:#492b35; color:#ffd6d2 }
+.badge { display:inline-block; padding:3px 10px; border:1px solid var(--line); border-radius:99px; font-size:12px; color:var(--gold) }
+.tabs { display:flex; gap:8px; overflow:auto; margin:0 0 17px; padding-bottom:3px }
+.tabs button { white-space:nowrap; flex-shrink:0 }
+.tabs button.active { background:var(--gold); color:#182337 }
+.section { display:none }
+.section.active { display:block }
+.entry { padding:13px 0; border-bottom:1px solid var(--line) }
+.entry-title { font-weight:700 }
+.entry-meta { font-size:12px; color:var(--muted); margin-top:3px }
+.entry-body { white-space:pre-wrap; line-height:1.5; margin:7px 0 }
+.empty { color:var(--muted); padding:18px; text-align:center; border:1px dashed var(--line); border-radius:12px }
+.profile { display:flex; gap:12px; align-items:center }
+.avatar { height:46px; width:46px; display:grid; place-items:center; background:#35445d; border-radius:14px; font-size:24px }
+.footer { text-align:center; padding:22px; color:var(--muted); font-size:13px }
+.loginbox { max-width:580px; margin:30px auto }
+.adminflag { color:#7ec8a0 }
+.vote-chart { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; align-items:end; margin-top:16px }
+.vote-col { text-align:center; min-width:0 }
+.vote-count { font-size:22px; font-weight:700 }
+.vote-track {
+  height:112px; display:flex; align-items:end; background:#0f1929;
+  border:1px solid var(--line); border-radius:9px; overflow:hidden; margin:6px 0;
+}
+.vote-bar { width:100%; border-radius:6px 6px 0 0; transition:height .2s }
+.vote-label { font-size:14px }
+.vote-col button { width:100%; margin-top:8px; padding:8px 4px; font-size:13px }
+.result-box { padding:11px; border-radius:10px; margin-top:12px }
+.result-box.pass { background:#203d35; color:#c7f1d8 }
+.result-box.fail { background:#492b35; color:#ffd6d2 }
+.small-action { display:flex; gap:7px; flex-wrap:wrap; margin-top:9px }
+.member-email { overflow-wrap:anywhere }
+@media(max-width:600px) {
+  .panel { padding:16px }
+  .stat strong { font-size:21px }
+  .topbar { margin-top:12px }
+}
 </style>
 </head>
+
 <body>
 <header>
   <div class="seal">🏛️</div>
   <h1>মহাজোট আবাসিক সংসদ</h1>
   <p>আট সদস্য, এক আবাসন, সীমাহীন বিতর্ক।</p>
-  <div class="topbar"><span class="brand-mini">● অধিবেশন চলমান</span><span id="headerUser" class="muted smalltext">অতিথি গ্যালারি</span></div>
+  <div class="topbar">
+    <span class="brand-mini">● অধিবেশন চলমান</span>
+    <span id="headerUser" class="muted smalltext">অতিথি গ্যালারি</span>
+  </div>
 </header>
+
 <main>
   <section id="loginView" class="loginbox">
     <div class="panel">
       <span class="badge">সদস্য প্রবেশদ্বার</span>
       <h2 style="margin-top:12px">সংসদে প্রবেশ করুন</h2>
-      <p class="muted">নিজের সংসদীয় নাম লিখে Google অ্যাকাউন্ট দিয়ে পরিচয় যাচাই করুন।</p>
+      <p class="muted">নিজের সংসদীয় নাম লিখে Google দিয়ে লগইন করুন।</p>
       <label for="displayName">নাম / ডাকনাম</label>
-      <input id="displayName" maxlength="50" placeholder="যেমন: চা-বিষয়ক মাননীয় মন্ত্রী" autocomplete="nickname">
+      <input id="displayName" maxlength="50" placeholder="তোমার সংসদীয় নাম">
       <button id="loginBtn" style="width:100%">🔐 Google দিয়ে লগইন</button>
-      <div id="loginStatus" class="notice" style="margin-top:12px">এই ওয়েবসাইটে প্রকৃত Google লগইন চালু করতে একবার Firebase কনফিগার করতে হবে।</div>
-      <p class="smalltext">লগইন করলে ওয়েবসাইটের ভেতরে করা কিছু কাজের রেকর্ড রাখা হবে। সদস্যদের জানিয়ে ব্যবহার করুন। Google পাসওয়ার্ড এই ওয়েবসাইট কখনো সংগ্রহ করে না।</p>
+      <div id="loginStatus" class="notice" style="margin-top:12px">লগইন করতে নাম লিখুন।</div>
+      <p class="smalltext">এই ওয়েবসাইট তোমার Google পাসওয়ার্ড সংগ্রহ করে না।</p>
     </div>
   </section>
 
   <section id="appView" class="hidden">
     <div class="panel">
       <div class="row" style="justify-content:space-between">
-        <div class="profile"><div class="avatar">🎖️</div><div><span class="badge">সংসদ সদস্য</span><h2 id="welcome" style="margin:5px 0 0">স্বাগতম</h2><div id="userEmail" class="muted smalltext member-email"></div></div></div>
+        <div class="profile">
+          <div class="avatar">🎖️</div>
+          <div>
+            <span class="badge">সংসদ সদস্য</span>
+            <h2 id="welcome" style="margin:5px 0 0">স্বাগতম</h2>
+            <div id="userEmail" class="muted smalltext member-email"></div>
+          </div>
+        </div>
         <button id="logoutBtn" class="secondary small">লগআউট</button>
       </div>
     </div>
 
     <div id="adminPanel" class="panel hidden">
-      <div class="subheading"><h2>🛡️ স্পিকারের বিশেষ Admin কক্ষ</h2><span class="badge adminflag">প্রশাসক</span></div>
+      <h2>🛡️ স্পিকারের Admin কক্ষ</h2>
       <p class="muted">Admin: sheikh.yeasin7001@gmail.com</p>
       <div id="adminStats" class="stats"></div>
-      <h3>সদস্য তালিকা</h3><div id="memberList"></div>
-      <h3 style="margin-top:20px">কার্যকলাপের রেজিস্টার</h3><p class="smalltext">সর্বশেষ ১০০টি ওয়েবসাইট কার্যকলাপ।</p><div id="activityList"></div>
+      <h3>সদস্য তালিকা</h3>
+      <div id="memberList"></div>
+      <h3>কার্যকলাপের রেজিস্টার</h3>
+      <div id="activityList"></div>
     </div>
 
     <div class="stats" style="margin-bottom:17px">
       <div class="stat"><strong id="memberCount">৮</strong><span>সংসদীয় আসন</span></div>
-      <div class="stat"><strong id="incidentCount">০</strong><span>নথিভুক্ত ঘটনা</span></div>
+      <div class="stat"><strong id="incidentCount">০</strong><span>ঘটনা</span></div>
       <div class="stat"><strong id="proposalCount">০</strong><span>প্রস্তাব ও অভিযোগ</span></div>
     </div>
 
-    <nav class="tabs" aria-label="সংসদীয় বিভাগ">
+    <nav class="tabs">
       <button class="active" data-tab="home">মূল অধিবেশন</button>
       <button data-tab="incidents">ঘটনা ও কার্যবিবরণী</button>
       <button data-tab="proposals">প্রস্তাব ও অভিযোগ</button>
-      <button data-tab="votes">ভোটাভুটি</button>
       <button data-tab="awards">সম্মাননা</button>
     </nav>
 
     <section id="tab-home" class="section active">
       <div class="panel">
         <h2>📢 মাননীয় সদস্যবৃন্দ, স্বাগতম</h2>
-        <p>এই সংসদে চা, চার্জার, ঘুম, খাবার এবং রাত-বিরাতে শুরু হওয়া বিতর্ক—সবই জাতীয় গুরুত্বপূর্ণ বিষয়।</p>
+        <p>চা, চার্জার, ঘুম, খাবার এবং রাত-বিরাতের বিতর্ক—সবই জাতীয় গুরুত্বপূর্ণ বিষয়।</p>
         <div class="grid">
-          <div class="tile"><div class="emoji">📜</div><h3>কার্যবিবরণী</h3><p class="muted">রুমের উল্লেখযোগ্য ঘটনা নথিভুক্ত করো।</p><button class="secondary" data-goto="incidents">ঘটনা দেখো</button></div>
-          <div class="tile"><div class="emoji">📣</div><h3>প্রস্তাব ও অভিযোগ</h3><p class="muted">যে কোনো আবাসিক সমস্যা সংসদে উত্থাপন করো।</p><button class="secondary" data-goto="proposals">প্রস্তাব দাও</button></div>
-          <div class="tile"><div class="emoji">🗳️</div><h3>গণতান্ত্রিক ভোট</h3><p class="muted">কোন বিষয়ে কে কী মত দিল, তা ভোটের মাধ্যমে দেখো।</p><button class="secondary" data-goto="votes">ভোটে যাও</button></div>
+          <div class="tile">
+            <div class="emoji">📜</div><h3>কার্যবিবরণী</h3>
+            <p class="muted">রুমের উল্লেখযোগ্য ঘটনা নথিভুক্ত করো।</p>
+            <button class="secondary" data-goto="incidents">ঘটনা দেখো</button>
+          </div>
+          <div class="tile">
+            <div class="emoji">📣</div><h3>প্রস্তাব ও অভিযোগ</h3>
+            <p class="muted">প্রস্তাব উত্থাপন করে ভোটের মাধ্যমে সিদ্ধান্ত নাও।</p>
+            <button class="secondary" data-goto="proposals">প্রস্তাব দাও</button>
+          </div>
+          <div class="tile">
+            <div class="emoji">🏆</div><h3>সম্মাননা</h3>
+            <p class="muted">মজার খেতাবের মনোনয়ন দাও।</p>
+            <button class="secondary" data-goto="awards">সম্মাননা দেখো</button>
+          </div>
         </div>
       </div>
-      <div class="panel"><h2>📰 সর্বশেষ সংসদীয় কার্যক্রম</h2><div id="recentFeed" class="empty">এখনো কোনো কার্যক্রম নেই। প্রথম ঘটনা নথিভুক্ত করো!</div></div>
+      <div class="panel">
+        <h2>📰 সর্বশেষ কার্যক্রম</h2>
+        <div id="recentFeed" class="empty">এখনো কোনো কার্যক্রম নেই।</div>
+      </div>
     </section>
 
     <section id="tab-incidents" class="section">
-      <div class="panel"><h2>📜 ঘটনা নথিভুক্তকরণ</h2><p class="muted">ঘটনা যতই তুচ্ছ হোক, সংসদীয় নথিতে তার স্থান হতে পারে।</p>
-        <label for="incidentTitle">ঘটনার শিরোনাম</label><input id="incidentTitle" maxlength="100" placeholder="যেমন: ফ্রিজে রাখা শেষ ডিম নিখোঁজ">
-        <label for="incidentBody">ঘটনার বিবরণ</label><textarea id="incidentBody" maxlength="1500" placeholder="কী ঘটেছে, কখন ঘটেছে, কারা উপস্থিত ছিল..."></textarea>
+      <div class="panel">
+        <h2>📜 ঘটনা নথিভুক্তকরণ</h2>
+        <label for="incidentTitle">ঘটনার শিরোনাম</label>
+        <input id="incidentTitle" maxlength="100" placeholder="যেমন: ফ্রিজের শেষ ডিম নিখোঁজ">
+        <label for="incidentBody">ঘটনার বিবরণ</label>
+        <textarea id="incidentBody" maxlength="1500"></textarea>
         <button id="addIncident">কার্যবিবরণীতে জমা দাও</button>
-      </div><div class="panel"><h2>নথিভুক্ত ঘটনাসমূহ</h2><div id="incidentList" class="empty">কোনো ঘটনা নথিভুক্ত হয়নি।</div></div>
+      </div>
+      <div class="panel"><h2>নথিভুক্ত ঘটনাসমূহ</h2><div id="incidentList" class="empty">কোনো ঘটনা নেই।</div></div>
     </section>
 
     <section id="tab-proposals" class="section">
-      <div class="panel"><h2>📣 প্রস্তাব ও অভিযোগ</h2>
-        <label for="proposalTitle">প্রস্তাবের শিরোনাম</label><input id="proposalTitle" maxlength="100" placeholder="যেমন: রাত ২টার পর উচ্চস্বরে গান নিষিদ্ধ করা হোক">
-        <label for="proposalBody">বিস্তারিত</label><textarea id="proposalBody" maxlength="1500" placeholder="প্রস্তাবের পক্ষে যুক্তি লিখো..."></textarea>
+      <div class="panel">
+        <h2>📣 প্রস্তাব ও অভিযোগ উত্থাপন</h2>
+        <p class="muted">প্রস্তাব জমা দেওয়ার পর প্রস্তাবদাতা বা Admin ভোট শুরু করতে পারবেন।</p>
+        <label for="proposalTitle">শিরোনাম</label>
+        <input id="proposalTitle" maxlength="100" placeholder="যেমন: রাত ২টার পর গান বন্ধ রাখা হোক">
+        <label for="proposalBody">বিস্তারিত</label>
+        <textarea id="proposalBody" maxlength="1500"></textarea>
         <button id="addProposal">সংসদে উত্থাপন করো</button>
-      </div><div class="panel"><h2>উত্থাপিত প্রস্তাব</h2><div id="proposalList" class="empty">এখনো কোনো প্রস্তাব নেই।</div></div>
-    </section>
-
-    <section id="tab-votes" class="section">
-      <div class="panel"><h2>🗳️ নতুন ভোট আয়োজন</h2>
-        <label for="voteQuestion">প্রশ্ন</label><input id="voteQuestion" maxlength="180" placeholder="যেমন: শুক্রবার সকালের নাশতা কে আনবে?">
-        <label for="voteA">বিকল্প ১</label><input id="voteA" maxlength="80" placeholder="প্রথম বিকল্প">
-        <label for="voteB">বিকল্প ২</label><input id="voteB" maxlength="80" placeholder="দ্বিতীয় বিকল্প">
-        <button id="createVote">ভোটের প্রস্তাব দাও</button>
-      </div><div class="panel"><h2>চলমান ভোট</h2><div id="voteList" class="empty">এখনো ভোট তৈরি হয়নি।</div></div>
+      </div>
+      <div class="panel"><h2>প্রস্তাব, অভিযোগ ও ভোটের ফলাফল</h2><div id="proposalList" class="empty">এখনো কোনো প্রস্তাব নেই।</div></div>
     </section>
 
     <section id="tab-awards" class="section">
-      <div class="panel"><h2>🏆 সংসদীয় সম্মাননা</h2><p class="muted">মজার খেতাব, যেমন—ঘুমের সম্রাট, চার্জার-চোর, চা-বিষয়ক মন্ত্রী। সম্মাননা মনোনয়ন দিতে পারো।</p>
-        <label for="awardName">মনোনীত ব্যক্তির নাম / ডাকনাম</label><input id="awardName" maxlength="60" placeholder="কার জন্য খেতাব?">
-        <label for="awardTitle">খেতাব</label><input id="awardTitle" maxlength="100" placeholder="যেমন: ঘুমের সম্রাট">
+      <div class="panel">
+        <h2>🏆 সংসদীয় সম্মাননা</h2>
+        <label for="awardName">মনোনীত সদস্যের নাম</label>
+        <input id="awardName" maxlength="60">
+        <label for="awardTitle">সম্মাননার খেতাব</label>
+        <input id="awardTitle" maxlength="100" placeholder="যেমন: ঘুমের সম্রাট">
         <button id="addAward">মনোনয়ন জমা দাও</button>
-      </div><div class="panel"><h2>মনোনয়নসমূহ</h2><div id="awardList" class="empty">এখনো কোনো মনোনয়ন নেই।</div></div>
+      </div>
+      <div class="panel"><h2>সম্মাননাসমূহ</h2><div id="awardList" class="empty">এখনো কোনো মনোনয়ন নেই।</div></div>
     </section>
   </section>
-  <section class="panel"><h2>📌 সংসদীয় নোটিশ</h2><p>এই সাইটের activity log শুধু সাইটের ভেতরে করা কাজ রেকর্ড করে। এটি অন্য অ্যাপ, ব্যক্তিগত ফাইল বা বাইরের ব্রাউজিং ট্র্যাক করে না।</p><p class="smalltext">Admin সদস্যদের ইমেইল, লগইন সময় এবং সাইটের ভেতরে নথিভুক্ত কার্যকলাপ দেখতে পারবেন। Google পাসওয়ার্ড কখনোই নয়।</p></section>
+
+  <div class="panel">
+    <h2>📌 সংসদীয় নোটিশ</h2>
+    <p>Admin ওয়েবসাইটে নথিভুক্ত কার্যকলাপ ও সদস্যদের প্রোফাইল দেখতে পারবেন।</p>
+  </div>
 </main>
+
 <footer class="footer">মহাজোট আবাসিক সংসদ · “আট সদস্য, এক আবাসন, সীমাহীন বিতর্ক।”</footer>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, collection, addDoc, query, orderBy, limit, getDocs, serverTimestamp, onSnapshot, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup,
+  onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {
+  getFirestore, doc, setDoc, getDoc, collection, addDoc,
+  query, orderBy, limit, getDocs, serverTimestamp,
+  onSnapshot, updateDoc, deleteDoc
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAdiDFEtiVjUByBvx7nMBcnqr8WQ6fPZvI",
@@ -128,91 +262,470 @@ const firebaseConfig = {
   appId: "1:224210386175:web:4835cafd7d4f62944a60ca",
   measurementId: "G-J40SBM8PYX"
 };
-const ADMIN_EMAIL = "sheikh.yeasin7001@gmail.com";
-const configured = !Object.values(firebaseConfig).some(v => v.startsWith("PASTE_"));
-const $ = s => document.querySelector(s);
-let auth=null, db=null, currentUser=null, displayName="", unsubscribers=[];
-const loginView=$("#loginView"), appView=$("#appView");
 
-if(configured){
- const fb=initializeApp(firebaseConfig); auth=getAuth(fb); db=getFirestore(fb);
-}else{
- $("#loginBtn").disabled=true;
- $("#loginStatus").textContent="Google লগইন চালু করতে README.md অনুসারে Firebase config যোগ করতে হবে।";
+const ADMIN_EMAIL = "sheikh.yeasin7001@gmail.com";
+const $ = s => document.querySelector(s);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+let displayName = "";
+let unsubscribers = [];
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[c]);
 }
-function msg(el,text,kind=""){el.textContent=text;el.className="notice"+(kind?" "+kind:"");}
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function dateText(ts){try{return ts?.toDate?.().toLocaleString("bn-BD")||"সময় পাওয়া যায়নি"}catch{return "সময় পাওয়া যায়নি"}}
-function isAdmin(){return (currentUser?.email||"").toLowerCase()===ADMIN_EMAIL.toLowerCase()}
-async function logAction(action,detail=""){if(!currentUser||!db)return;await addDoc(collection(db,"activities"),{uid:currentUser.uid,email:currentUser.email,displayName,action,detail,createdAt:serverTimestamp()})}
-async function saveRecord(type,data){await addDoc(collection(db,type),{...data,uid:currentUser.uid,email:currentUser.email,displayName,createdAt:serverTimestamp()});await logAction("created_"+type,data.title||data.name||"");}
-function renderEntries(el,docs,type){if(!docs.length){el.className="empty";el.textContent="এখনো কোনো নথি নেই।";return}
- el.className="";
- el.innerHTML=docs.map(d=>{const x=d.data();let extra="";
- if(type==="votes"){const options=x.options||[];const votes=x.votes||{};extra=`<div class="smalltext">`+options.map((o,i)=>`<div class="vote-option"><span>${esc(o)}</span><span class="badge">${Object.values(votes).filter(v=>v===i).length} ভোট</span><button class="small secondary castVote" data-id="${d.id}" data-choice="${i}">ভোট দাও</button></div>`).join("")+`</div>`}
- if(type==="awards")extra=`<span class="badge">${esc(x.name||"")}</span>`;
- return `<article class="entry"><div class="entry-title">${esc(x.title||x.award||"নথি")}</div><div class="entry-meta">উত্থাপন করেছেন ${esc(x.displayName||"সদস্য")} · ${dateText(x.createdAt)}</div>${x.body?`<div class="entry-body">${esc(x.body)}</div>`:""}${extra}${isAdmin()?`<div class="small-action"><button class="danger small deleteEntry" data-col="${type}" data-id="${d.id}">মুছে ফেলুন (Admin)</button></div>`:""}</article>`
- }).join("");
- el.querySelectorAll(".castVote").forEach(b=>b.addEventListener("click",()=>castVote(b.dataset.id,Number(b.dataset.choice))));
- el.querySelectorAll(".deleteEntry").forEach(b=>b.addEventListener("click",()=>deleteEntry(b.dataset.col,b.dataset.id)));
+function isAdmin() {
+  return (currentUser?.email || "").toLowerCase() === ADMIN_EMAIL.toLowerCase();
 }
-const collections=[["incidents","incidentList"],["proposals","proposalList"],["votes","voteList"],["awards","awardList"]];
-function watchData(){
- unsubscribers.forEach(fn=>fn());unsubscribers=[];
- for(const [col,elId] of collections){
-  const unsub=onSnapshot(query(collection(db,col),orderBy("createdAt","desc"),limit(100)),snap=>{
-   const docs=snap.docs;renderEntries($("#"+elId),docs,col);
-   if(col==="incidents")$("#incidentCount").textContent=String(docs.length).replace(/\d/g,n=>"০১২৩৪৫৬৭৮৯"[n]);
-   if(col==="proposals")$("#proposalCount").textContent=String(docs.length).replace(/\d/g,n=>"০১২৩৪৫৬৭৮৯"[n]);
-   renderFeed();
-  },err=>{console.error(err);$("#"+elId).textContent="ডেটা লোড হয়নি। Firebase rules পরীক্ষা করো।"});
-  unsubscribers.push(unsub);
- }
+function bn(n) {
+  return String(n).replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[Number(d)]);
 }
-async function renderFeed(){
- const el=$("#recentFeed");if(!db)return;
- try{const snaps=await Promise.all(["incidents","proposals","votes","awards"].map(c=>getDocs(query(collection(db,c),orderBy("createdAt","desc"),limit(4)))));
- let items=[];snaps.forEach(s=>s.docs.forEach(d=>items.push({...d.data(),type:s.query?.path||"সংসদীয় নথি"})));
- items.sort((a,b)=>(b.createdAt?.toMillis?.()||0)-(a.createdAt?.toMillis?.()||0));items=items.slice(0,8);
- if(!items.length){el.className="empty";el.textContent="এখনো কোনো কার্যক্রম নেই। প্রথম ঘটনা নথিভুক্ত করো!";return}
- el.className="";el.innerHTML=items.map(x=>`<div class="entry"><div class="entry-title">${esc(x.title||x.award||"নতুন সংসদীয় নথি")}</div><div class="entry-meta">${esc(x.displayName||"সদস্য")} · ${dateText(x.createdAt)}</div></div>`).join("");
- }catch(e){el.className="empty";el.textContent="সাম্প্রতিক কার্যক্রম লোড করা যায়নি।"}
+function dateText(ts) {
+  try { return ts?.toDate?.().toLocaleString("bn-BD") || "সময় পাওয়া যায়নি"; }
+  catch { return "সময় পাওয়া যায়নি"; }
 }
-async function castVote(id,choice){try{const ref=doc(db,"votes",id);const snap=await getDoc(ref);if(!snap.exists())return;const votes=snap.data().votes||{};votes[currentUser.uid]=choice;await updateDoc(ref,{votes});await logAction("cast_vote",id);msg($("#userStatus"),"ভোট রেকর্ড হয়েছে।","success")}catch(e){alert("ভোট রেকর্ড করা যায়নি: "+e.message)}}
-async function deleteEntry(col,id){if(!confirm("এই নথি মুছে ফেলতে চাও?"))return;try{const {deleteDoc}=await import("https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js");await deleteDoc(doc(db,col,id));await logAction("deleted_"+col,id)}catch(e){alert("মুছে ফেলা যায়নি: "+e.message)}}
-$("#loginBtn").addEventListener("click",async()=>{
- const n=$("#displayName").value.trim();if(!n){msg($("#loginStatus"),"আগে নাম বা ডাকনাম লিখো।","error");return}if(!configured)return;
- try{displayName=n;const result=await signInWithPopup(auth,new GoogleAuthProvider());await finishLogin(result.user,n)}catch(e){msg($("#loginStatus"),"লগইন করা যায়নি: "+e.message,"error")}
+function showMessage(el, text, error = false) {
+  el.textContent = text;
+  el.className = "notice" + (error ? " error" : "");
+}
+async function logAction(action, detail = "") {
+  if (!currentUser) return;
+  await addDoc(collection(db, "activities"), {
+    uid: currentUser.uid, email: currentUser.email, displayName,
+    action, detail, createdAt: serverTimestamp()
+  });
+}
+async function saveRecord(type, data) {
+  await addDoc(collection(db, type), {
+    ...data, uid: currentUser.uid, email: currentUser.email,
+    displayName, createdAt: serverTimestamp()
+  });
+  await logAction("created_" + type, data.title || data.name || "");
+}
+
+/* Vote calculation: বিরত সিদ্ধান্তের শতকরা হিসাবে গণনা হবে না। */
+function resultFor(votes) {
+  const values = Object.values(votes || {});
+  const yes = values.filter(v => v === "yes").length;
+  const no = values.filter(v => v === "no").length;
+  const abstain = values.filter(v => v === "abstain").length;
+  const decisive = yes + no;
+  return {
+    yes, no, abstain, decisive, total: values.length,
+    result: decisive > 0 && yes / decisive > 0.5 ? "গৃহীত" : "বাতিল"
+  };
+}
+
+function showTab(tab) {
+  document.querySelectorAll("[data-tab]").forEach(b =>
+    b.classList.toggle("active", b.dataset.tab === tab)
+  );
+  document.querySelectorAll(".section").forEach(s =>
+    s.classList.toggle("active", s.id === "tab-" + tab)
+  );
+}
+document.querySelectorAll("[data-tab]").forEach(b =>
+  b.addEventListener("click", () => showTab(b.dataset.tab))
+);
+document.querySelectorAll("[data-goto]").forEach(b =>
+  b.addEventListener("click", () => showTab(b.dataset.goto))
+);
+
+function renderEntries(el, docs, type) {
+  if (!docs.length) {
+    el.className = "empty";
+    el.textContent = "এখনো কোনো নথি নেই।";
+    return;
+  }
+
+  el.className = "";
+  el.innerHTML = docs.map(d => {
+    const x = d.data();
+    let extra = "";
+
+    if (type === "proposals") {
+      const votes = x.votes || {};
+      const v = resultFor(votes);
+      const started = x.votingStarted === true;
+      const open = x.votingOpen === true;
+      const closed = started && !open;
+      const own = isAdmin() || x.uid === currentUser.uid;
+      const hasVoted = Object.prototype.hasOwnProperty.call(votes, currentUser.uid);
+      const status = !started ? "বিচারাধীন" : open ? "ভোট চলছে" : "ভোট বন্ধ";
+      const result = v.result;
+      const max = Math.max(v.yes, v.no, v.abstain, 1);
+      const choices = [
+        ["yes", "পক্ষে", v.yes, "#45A879"],
+        ["no", "বিপক্ষে", v.no, "#D96C6C"],
+        ["abstain", "বিরত", v.abstain, "#8B9BB4"]
+      ];
+
+      extra = `
+      <div class="tile" style="margin-top:12px">
+        <div class="row" style="justify-content:space-between">
+          <strong>🗳️ ভোটাভুটি</strong>
+          <span class="badge">${status}</span>
+        </div>
+
+        <div class="vote-chart">
+          ${choices.map(([key, label, count, color]) => `
+            <div class="vote-col">
+              <div class="vote-count">${bn(count)}</div>
+              <div class="vote-track">
+                <div class="vote-bar" style="height:${count ? Math.max(7, count/max*100) : 0}%;background:${color}"></div>
+              </div>
+              <div class="vote-label">${label}</div>
+              ${open ? `<button class="secondary proposalVote" data-id="${d.id}" data-choice="${key}" ${hasVoted ? "disabled" : ""}>${hasVoted ? (votes[currentUser.uid] === key ? "আপনার ভোট" : "ভোট দেওয়া হয়েছে") : "ভোট দিন"}</button>` : ""}
+            </div>
+          `).join("")}
+        </div>
+
+        <p class="smalltext">
+          মোট ভোট: ${bn(v.total)} · সিদ্ধান্তের ভোট: ${bn(v.decisive)}
+        </p>
+
+        ${!started ? `<p class="smalltext">প্রস্তাবদাতা বা Admin ভোট শুরু করতে পারবেন।</p>` : ""}
+
+        ${closed ? `
+          <div class="result-box ${result === "গৃহীত" ? "pass" : "fail"}">
+            <strong>চূড়ান্ত ফলাফল: ${result}</strong>
+            <div>পক্ষে ${bn(v.yes)} · বিপক্ষে ${bn(v.no)} · বিরত ${bn(v.abstain)}</div>
+            <div class="smalltext">সিদ্ধান্ত গণনা: পক্ষে ÷ (পক্ষে + বিপক্ষে)। বিরত ভোট বাদ।</div>
+          </div>` : ""}
+
+        <div class="small-action">
+          ${!started && own ? `<button class="small startVote" data-id="${d.id}">ভোট শুরু করো</button>` : ""}
+          ${open && own ? `<button class="small danger closeVote" data-id="${d.id}">ভোট বন্ধ করো</button>` : ""}
+        </div>
+      </div>`;
+    }
+
+    if (type === "awards") {
+      extra = `<span class="badge">${esc(x.name || "")}</span>`;
+    }
+
+    return `
+      <article class="entry">
+        <div class="entry-title">${esc(x.title || x.award || "নথি")}</div>
+        <div class="entry-meta">উত্থাপন করেছেন ${esc(x.displayName || "সদস্য")} · ${dateText(x.createdAt)}</div>
+        ${x.body ? `<div class="entry-body">${esc(x.body)}</div>` : ""}
+        ${extra}
+        ${isAdmin() ? `<div class="small-action"><button class="danger small deleteEntry" data-col="${type}" data-id="${d.id}">মুছে ফেলুন (Admin)</button></div>` : ""}
+      </article>`;
+  }).join("");
+
+  el.querySelectorAll(".proposalVote").forEach(b =>
+    b.addEventListener("click", () => castVote(b.dataset.id, b.dataset.choice))
+  );
+  el.querySelectorAll(".startVote").forEach(b =>
+    b.addEventListener("click", () => startVote(b.dataset.id))
+  );
+  el.querySelectorAll(".closeVote").forEach(b =>
+    b.addEventListener("click", () => closeVote(b.dataset.id))
+  );
+  el.querySelectorAll(".deleteEntry").forEach(b =>
+    b.addEventListener("click", () => deleteEntry(b.dataset.col, b.dataset.id))
+  );
+}
+
+const collections = [
+  ["incidents", "incidentList"],
+  ["proposals", "proposalList"],
+  ["awards", "awardList"]
+];
+
+function watchData() {
+  unsubscribers.forEach(fn => fn());
+  unsubscribers = [];
+
+  for (const [col, elementId] of collections) {
+    const unsub = onSnapshot(
+      query(collection(db, col), orderBy("createdAt", "desc"), limit(100)),
+      snap => {
+        renderEntries($("#" + elementId), snap.docs, col);
+        if (col === "incidents") $("#incidentCount").textContent = bn(snap.size);
+        if (col === "proposals") $("#proposalCount").textContent = bn(snap.size);
+        renderFeed();
+      },
+      err => {
+        console.error(err);
+        $("#" + elementId).textContent = "ডেটা লোড হয়নি। Firebase Rules পরীক্ষা করো।";
+      }
+    );
+    unsubscribers.push(unsub);
+  }
+}
+
+async function renderFeed() {
+  const el = $("#recentFeed");
+  try {
+    const snaps = await Promise.all(
+      ["incidents", "proposals", "awards"].map(c =>
+        getDocs(query(collection(db, c), orderBy("createdAt", "desc"), limit(4)))
+      )
+    );
+    let items = [];
+    snaps.forEach(s => s.docs.forEach(d => items.push(d.data())));
+    items.sort((a,b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0));
+    items = items.slice(0, 8);
+
+    if (!items.length) {
+      el.className = "empty";
+      el.textContent = "এখনো কোনো কার্যক্রম নেই।";
+      return;
+    }
+    el.className = "";
+    el.innerHTML = items.map(x => `
+      <div class="entry">
+        <div class="entry-title">${esc(x.title || x.award || "নতুন নথি")}</div>
+        <div class="entry-meta">${esc(x.displayName || "সদস্য")} · ${dateText(x.createdAt)}</div>
+      </div>`).join("");
+  } catch (e) {
+    el.textContent = "সাম্প্রতিক কার্যক্রম লোড করা যায়নি।";
+  }
+}
+
+/* ভোট শুরুর অনুমতি */
+async function startVote(id) {
+  const ref = doc(db, "proposals", id);
+  try {
+    const s = await getDoc(ref);
+    if (!s.exists()) return;
+    const p = s.data();
+    if (!(isAdmin() || p.uid === currentUser.uid))
+      return alert("শুধু প্রস্তাবদাতা বা Admin ভোট শুরু করতে পারবেন।");
+    if (p.votingStarted === true)
+      return alert("এই প্রস্তাবের ভোট আগে শুরু হয়েছে বা শেষ হয়েছে।");
+
+    await updateDoc(ref, {
+      votingStarted: true,
+      votingOpen: true,
+      votingStartedBy: currentUser.uid,
+      votingStartedAt: serverTimestamp(),
+      votes: {}
+    });
+    await logAction("proposal_voting_started", id);
+  } catch (e) {
+    alert("ভোট শুরু করা যায়নি: " + e.message);
+  }
+}
+
+/* একজন সদস্য একবার ভোট দিতে পারবেন।
+   চূড়ান্ত নিরাপত্তার জন্য Firestore Rules-ও ঠিক থাকতে হবে। */
+async function castVote(id, choice) {
+  if (!["yes", "no", "abstain"].includes(choice)) return;
+  const ref = doc(db, "proposals", id);
+
+  try {
+    const s = await getDoc(ref);
+    if (!s.exists()) return;
+    const p = s.data();
+
+    if (p.votingOpen !== true) return alert("এই ভোট এখন খোলা নেই।");
+    if (Object.prototype.hasOwnProperty.call(p.votes || {}, currentUser.uid))
+      return alert("আপনি ইতোমধ্যে ভোট দিয়েছেন।");
+
+    await updateDoc(ref, {
+      votes: { ...(p.votes || {}), [currentUser.uid]: choice }
+    });
+    await logAction("proposal_vote", choice + ":" + id);
+  } catch (e) {
+    alert("ভোট রেকর্ড করা যায়নি: " + e.message);
+  }
+}
+
+/* ভোট বন্ধ */
+async function closeVote(id) {
+  const ref = doc(db, "proposals", id);
+  try {
+    const s = await getDoc(ref);
+    if (!s.exists()) return;
+    const p = s.data();
+
+    if (!(isAdmin() || p.uid === currentUser.uid))
+      return alert("শুধু প্রস্তাবদাতা বা Admin ভোট বন্ধ করতে পারবেন।");
+    if (p.votingOpen !== true) return alert("এই ভোট খোলা নেই।");
+
+    const v = resultFor(p.votes || {});
+    if (!confirm(
+      `ভোট বন্ধ করবে?\nপক্ষে: ${v.yes}\nবিপক্ষে: ${v.no}\nবিরত: ${v.abstain}\nফলাফল: ${v.result}`
+    )) return;
+
+    await updateDoc(ref, {
+      votingOpen: false,
+      votingClosedAt: serverTimestamp(),
+      finalResult: v.result,
+      finalYes: v.yes,
+      finalNo: v.no,
+      finalAbstain: v.abstain,
+      finalTotal: v.total
+    });
+    await logAction("proposal_voting_closed", v.result + ":" + id);
+  } catch (e) {
+    alert("ভোট বন্ধ করা যায়নি: " + e.message);
+  }
+}
+
+async function deleteEntry(col, id) {
+  if (!isAdmin() || !confirm("এই নথি মুছে ফেলতে চাও?")) return;
+  try {
+    await deleteDoc(doc(db, col, id));
+    await logAction("deleted_" + col, id);
+  } catch (e) {
+    alert("মুছে ফেলা যায়নি: " + e.message);
+  }
+}
+
+/* Google লগইন */
+$("#loginBtn").addEventListener("click", async () => {
+  const name = $("#displayName").value.trim();
+  if (!name) return showMessage($("#loginStatus"), "আগে নাম লিখো।", true);
+
+  try {
+    displayName = name;
+    await signInWithPopup(auth, new GoogleAuthProvider());
+  } catch (e) {
+    showMessage($("#loginStatus"), "লগইন করা যায়নি: " + e.message, true);
+  }
 });
-async function finishLogin(user,name){
- currentUser=user;
- const ref=doc(db,"users",user.uid),old=await getDoc(ref);
- displayName=name||old.data()?.displayName||user.displayName||"সংসদ সদস্য";
- await setDoc(ref,{uid:user.uid,email:user.email,displayName,lastLoginAt:serverTimestamp(),createdAt:old.exists()?old.data().createdAt:serverTimestamp()},{merge:true});
- await logAction("login");
- loginView.classList.add("hidden");appView.classList.remove("hidden");$("#headerUser").textContent=displayName;$("#welcome").textContent="স্বাগতম, "+displayName;$("#userEmail").textContent=user.email||"";
- $("#adminPanel").classList.toggle("hidden",!isAdmin());
- $("#memberCount").textContent="৮";
- if(isAdmin())loadAdmin();
- watchData();
+
+async function finishLogin(user) {
+  currentUser = user;
+  const ref = doc(db, "users", user.uid);
+  const old = await getDoc(ref);
+  displayName = displayName || old.data()?.displayName || user.displayName || "সংসদ সদস্য";
+
+  await setDoc(ref, {
+    uid: user.uid,
+    email: user.email,
+    displayName,
+    lastLoginAt: serverTimestamp(),
+    createdAt: old.exists() ? old.data().createdAt : serverTimestamp()
+  }, { merge: true });
+
+  await logAction("login");
+  $("#loginView").classList.add("hidden");
+  $("#appView").classList.remove("hidden");
+  $("#headerUser").textContent = displayName;
+  $("#welcome").textContent = "স্বাগতম, " + displayName;
+  $("#userEmail").textContent = user.email || "";
+  $("#adminPanel").classList.toggle("hidden", !isAdmin());
+  $("#memberCount").textContent = "৮";
+
+  if (isAdmin()) loadAdmin();
+  watchData();
 }
-$("#logoutBtn").addEventListener("click",async()=>{try{await logAction("logout");await signOut(auth)}catch(e){alert(e.message)}});
-async function loadAdmin(){
- try{
-  const [us,as]=await Promise.all([getDocs(query(collection(db,"users"),orderBy("lastLoginAt","desc"),limit(100))),getDocs(query(collection(db,"activities"),orderBy("createdAt","desc"),limit(100)))]);
-  $("#adminStats").innerHTML=`<div class="stat"><strong>${us.size}</strong><span>সাম্প্রতিক সদস্য</span></div><div class="stat"><strong>${as.size}</strong><span>কার্যকলাপের রেকর্ড</span></div><div class="stat"><strong>${us.docs.filter(d=>d.data().email).length}</strong><span>ইমেইলসহ প্রোফাইল</span></div>`;
-  $("#memberList").innerHTML=us.docs.map(d=>{const x=d.data();return `<div class="entry"><strong>${esc(x.displayName||"সদস্য")}</strong><div class="entry-meta member-email">${esc(x.email||"")}</div><div class="smalltext">সর্বশেষ লগইন: ${dateText(x.lastLoginAt)}</div></div>`}).join("")||"কোনো সদস্য নেই";
-  $("#activityList").innerHTML=as.docs.map(d=>{const x=d.data();return `<div class="entry"><strong>${esc(x.displayName||"সদস্য")}</strong> · <span class="muted">${esc(x.email||"")}</span><div>${esc(x.action)} ${esc(x.detail||"")}</div><div class="entry-meta">${dateText(x.createdAt)}</div></div>`}).join("")||"এখনো কার্যকলাপ নেই";
- }catch(e){$("#activityList").textContent="Admin ডেটা লোড হয়নি। Firestore rules ও config পরীক্ষা করো।"}
+
+$("#logoutBtn").addEventListener("click", async () => {
+  try {
+    await logAction("logout");
+    await signOut(auth);
+  } catch (e) {
+    alert(e.message);
+  }
+});
+
+async function loadAdmin() {
+  try {
+    const [users, activities] = await Promise.all([
+      getDocs(query(collection(db, "users"), orderBy("lastLoginAt", "desc"), limit(100))),
+      getDocs(query(collection(db, "activities"), orderBy("createdAt", "desc"), limit(100)))
+    ]);
+
+    $("#adminStats").innerHTML = `
+      <div class="stat"><strong>${users.size}</strong><span>সাম্প্রতিক সদস্য</span></div>
+      <div class="stat"><strong>${activities.size}</strong><span>কার্যকলাপ</span></div>
+      <div class="stat"><strong>${users.docs.filter(d => d.data().email).length}</strong><span>ইমেইলসহ প্রোফাইল</span></div>`;
+
+    $("#memberList").innerHTML = users.docs.map(d => {
+      const x = d.data();
+      return `<div class="entry">
+        <strong>${esc(x.displayName || "সদস্য")}</strong>
+        <div class="entry-meta member-email">${esc(x.email || "")}</div>
+        <div class="smalltext">সর্বশেষ লগইন: ${dateText(x.lastLoginAt)}</div>
+      </div>`;
+    }).join("") || "কোনো সদস্য নেই";
+
+    $("#activityList").innerHTML = activities.docs.map(d => {
+      const x = d.data();
+      return `<div class="entry">
+        <strong>${esc(x.displayName || "সদস্য")}</strong>
+        <div class="entry-meta">${esc(x.email || "")}</div>
+        <div>${esc(x.action)} ${esc(x.detail || "")}</div>
+        <div class="entry-meta">${dateText(x.createdAt)}</div>
+      </div>`;
+    }).join("") || "এখনো কার্যকলাপ নেই";
+  } catch (e) {
+    $("#activityList").textContent = "Admin ডেটা লোড হয়নি। Firebase Rules পরীক্ষা করো।";
+  }
 }
-$("#addIncident").addEventListener("click",async()=>{const title=$("#incidentTitle").value.trim(),body=$("#incidentBody").value.trim();if(!title||!body)return alert("শিরোনাম ও বিবরণ দুটোই লিখো।");try{await saveRecord("incidents",{title,body});$("#incidentTitle").value="";$("#incidentBody").value="";msg($("#userStatus"),"ঘটনা কার্যবিবরণীতে জমা হয়েছে।","success")}catch(e){alert(e.message)}});
-$("#addProposal").addEventListener("click",async()=>{const title=$("#proposalTitle").value.trim(),body=$("#proposalBody").value.trim();if(!title||!body)return alert("শিরোনাম ও বিস্তারিত লিখো।");try{await saveRecord("proposals",{title,body});$("#proposalTitle").value="";$("#proposalBody").value="";}catch(e){alert(e.message)}});
-$("#createVote").addEventListener("click",async()=>{const title=$("#voteQuestion").value.trim(),a=$("#voteA").value.trim(),b=$("#voteB").value.trim();if(!title||!a||!b)return alert("প্রশ্ন ও দুইটি বিকল্প লিখো।");try{await saveRecord("votes",{title,options:[a,b],votes:{}});$("#voteQuestion").value="";$("#voteA").value="";$("#voteB").value=""}catch(e){alert(e.message)}});
-$("#addAward").addEventListener("click",async()=>{const name=$("#awardName").value.trim(),award=$("#awardTitle").value.trim();if(!name||!award)return alert("মনোনীত ব্যক্তির নাম ও খেতাব লিখো।");try{await saveRecord("awards",{name,award,title:award});$("#awardName").value="";$("#awardTitle").value=""}catch(e){alert(e.message)}});
-document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
-document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.goto)));
-function showTab(tab){document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id==="tab-"+tab));}
-if(configured)onAuthStateChanged(auth,async user=>{if(user){try{const snap=await getDoc(doc(db,"users",user.uid));await finishLogin(user,displayName||snap.data()?.displayName||user.displayName)}catch(e){msg($("#loginStatus"),"প্রোফাইল লোড হয়নি: "+e.message,"error")}}else{currentUser=null;unsubscribers.forEach(fn=>fn());loginView.classList.remove("hidden");appView.classList.add("hidden");$("#headerUser").textContent="অতিথি গ্যালারি"}});
+
+/* নতুন ঘটনা */
+$("#addIncident").addEventListener("click", async () => {
+  const title = $("#incidentTitle").value.trim();
+  const body = $("#incidentBody").value.trim();
+  if (!title || !body) return alert("শিরোনাম ও বিবরণ দুটোই লিখো।");
+  try {
+    await saveRecord("incidents", { title, body });
+    $("#incidentTitle").value = "";
+    $("#incidentBody").value = "";
+  } catch (e) {
+    alert("জমা দেওয়া যায়নি: " + e.message);
+  }
+});
+
+/* নতুন প্রস্তাব */
+$("#addProposal").addEventListener("click", async () => {
+  const title = $("#proposalTitle").value.trim();
+  const body = $("#proposalBody").value.trim();
+  if (!title || !body) return alert("শিরোনাম ও বিস্তারিত লিখো।");
+  try {
+    await saveRecord("proposals", {
+      title, body, votingStarted:false, votingOpen:false, votes:{}
+    });
+    $("#proposalTitle").value = "";
+    $("#proposalBody").value = "";
+  } catch (e) {
+    alert("প্রস্তাব জমা দেওয়া যায়নি: " + e.message);
+  }
+});
+
+/* সম্মাননা */
+$("#addAward").addEventListener("click", async () => {
+  const name = $("#awardName").value.trim();
+  const award = $("#awardTitle").value.trim();
+  if (!name || !award) return alert("নাম ও খেতাব দুটোই লিখো.");
+  try {
+    await saveRecord("awards", { name, award, title:award });
+    $("#awardName").value = "";
+    $("#awardTitle").value = "";
+  } catch (e) {
+    alert("মনোনয়ন জমা দেওয়া যায়নি: " + e.message);
+  }
+});
+
+onAuthStateChanged(auth, async user => {
+  if (user) {
+    try {
+      const snap = await getDoc(doc(db, "users", user.uid));
+      displayName = displayName || snap.data()?.displayName || user.displayName || "";
+      await finishLogin(user);
+    } catch (e) {
+      showMessage($("#loginStatus"), "প্রোফাইল লোড হয়নি: " + e.message, true);
+    }
+  } else {
+    currentUser = null;
+    unsubscribers.forEach(fn => fn());
+    unsubscribers = [];
+    $("#loginView").classList.remove("hidden");
+    $("#appView").classList.add("hidden");
+    $("#headerUser").textContent = "অতিথি গ্যালারি";
+  }
+});
 </script>
 </body>
 </html>
