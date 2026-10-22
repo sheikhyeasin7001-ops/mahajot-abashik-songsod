@@ -1,275 +1,662 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>মহাজোট আবাসিক সংসদ</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root {
+  --navy:#061d3a;
+  --navy2:#0b2e59;
+  --gold:#edbd55;
+  --bg:#f1f5fa;
+  --white:#fff;
+  --text:#102b50;
+  --muted:#7185a3;
+  --border:#e0e9f4;
+  --green:#168b63;
+  --red:#dc3545;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#f1f5f9;color:#172033;font-family:Arial,sans-serif}
-header{background:#172554;color:white;padding:25px 14px;text-align:center}
-header h1{margin:0 0 8px}
-main{max-width:900px;margin:auto;padding:15px}
-.card{background:white;padding:17px;margin:13px 0;border-radius:13px;box-shadow:0 2px 9px #0001}
-input,textarea,select{display:block;width:100%;padding:12px;margin:9px 0;border:1px solid #cbd5e1;border-radius:8px;font:inherit}
-button{padding:10px 13px;margin:4px 3px 4px 0;border:0;border-radius:7px;background:#2563eb;color:white;font:inherit;cursor:pointer}
-button:disabled{opacity:.5}
-nav{display:flex;flex-wrap:wrap;gap:5px}
-nav button{flex:1;min-width:100px}
+body{margin:0;font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--text)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.topbar{
+  min-height:105px;background:var(--navy);color:white;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 28px;gap:18px;position:relative;overflow:hidden;
+  border-bottom:4px solid var(--gold)
+}
+.topbar:before{
+  content:"";position:absolute;inset:0 0 0 37%;
+  background:linear-gradient(90deg,var(--navy),#061d3a55),
+  url('https://commons.wikimedia.org/wiki/Special:FilePath/Jatiya_Sangsad_Bhaban.jpg') center 43%/cover;
+  opacity:.75;pointer-events:none
+}
+.brand,.userbox{position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:17px}
+.logo{font-size:43px;color:var(--gold)}
+.brand h1{font-size:clamp(21px,3vw,34px);margin:0;color:var(--gold);line-height:1.35}
+.brand p{margin:0;color:white;font-size:16px}
+.userbox{display:flex;align-items:center;gap:12px}
+.avatar{width:43px;height:43px;border-radius:50%;object-fit:cover;background:#dce6f2}
+.userbox small{display:block;color:#d3deed}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - 160px)}
+.sidebar{background:linear-gradient(180deg,var(--navy),#09274a);color:white;padding:18px 10px}
+.navbtn{width:100%;border:0;background:transparent;color:white;padding:12px 13px;
+  text-align:left;border-radius:9px;margin-bottom:5px;font-size:16px}
+.navbtn:hover,.navbtn.active{background:#ffffff20;border-left:4px solid var(--gold);color:var(--gold)}
+.sidebar .nav-caption{color:#91a7c4;font-size:12px;padding:20px 12px 8px}
+.main{padding:22px;min-width:0}
+.welcome{
+  padding:24px;border-radius:15px;color:white;margin-bottom:17px;
+  background:linear-gradient(90deg,#061d3af5,#0b2e59b8),
+  url('https://commons.wikimedia.org/wiki/Special:FilePath/Jatiya_Sangsad_Bhaban.jpg') center/cover;
+  box-shadow:0 4px 15px #0b2e5914
+}
+.welcome h2{margin:0 0 5px;font-size:25px}
+.welcome p{margin:0;color:#e4edf8}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:18px}
+.stat,.panel,.item-card{background:white;border:1px solid var(--border);border-radius:13px;box-shadow:0 3px 12px #102b5008}
+.stat{padding:17px;display:flex;align-items:center;gap:13px}
+.stat-icon{width:49px;height:49px;display:grid;place-items:center;border-radius:12px;font-size:24px;background:#eaf1ff}
+.stat strong{font-size:25px;display:block;line-height:1.25}
+.stat small{color:var(--muted)}
+.columns{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,1fr);gap:17px}
+.panel{padding:17px;margin-bottom:17px;min-width:0}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.panel h3{margin:0;font-size:20px}
+.subtle{color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab,.btn{border:1px solid var(--border);background:white;color:var(--text);border-radius:8px;padding:9px 13px}
+.tab.active,.btn-primary{background:var(--navy2);color:white;border-color:var(--navy2)}
+.btn-gold{background:var(--gold);color:var(--navy);border:0;border-radius:8px;padding:9px 14px;font-weight:600}
+.btn-danger{background:#fff0f1;color:#bf2636;border:1px solid #f4c9ce;border-radius:8px;padding:8px 12px}
+.item-card{padding:15px;margin-bottom:11px;display:grid;grid-template-columns:49px minmax(0,1fr) auto;gap:13px;align-items:start}
+.item-icon{height:47px;width:47px;border-radius:12px;display:grid;place-items:center;font-size:23px;background:#eaf1ff}
+.item-card h4{margin:0 0 4px;font-size:17px}
+.item-card p{margin:0 0 8px;color:#657c9c;font-size:14px;overflow-wrap:anywhere}
+.item-meta{color:var(--muted);font-size:12px}
+.status{display:inline-block;border-radius:20px;padding:4px 11px;font-size:12px;background:#e7eef8;color:#254b7d;white-space:nowrap}
+.status.green{background:#d8f5e6;color:#147a4c}
+.status.gold{background:#fff0c8;color:#946400}
+.status.red{background:#ffe0e3;color:#b42332}
+.item-actions{display:flex;flex-direction:column;gap:7px;align-items:stretch;min-width:100px}
+.item-actions .btn{font-size:13px;padding:7px 10px}
+.vote-row{display:grid;grid-template-columns:65px minmax(0,1fr) 22px;gap:8px;align-items:center;margin:10px 0;font-size:14px}
+.bar{height:12px;border-radius:20px;background:#e7edf4;overflow:hidden}
+.bar span{height:100%;display:block;border-radius:20px}
+.member{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.member:last-child{border-bottom:0}
+.member img{width:39px;height:39px;border-radius:50%;object-fit:cover;background:#e3eaf4}
+.member-info{min-width:0;flex:1}
+.member-info strong{display:block}
+.member-info small{color:var(--muted)}
+.honor-box{background:linear-gradient(130deg,#fff8e6,#fff);border:1px solid #f0d99c;border-radius:12px;padding:15px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:14px;margin-bottom:5px}
+.field input,.field textarea,.field select{width:100%;border:1px solid #d7e1ef;border-radius:8px;padding:10px;background:white;color:var(--text)}
+.field textarea{min-height:100px;resize:vertical}
+.full{grid-column:1/-1}
+.empty{text-align:center;padding:25px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:570px}
+th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:#f1f5fa;color:#3d5678}
+.table-wrap{overflow-x:auto}
 .hidden{display:none!important}
-.muted{color:#64748b;font-size:13px}
-.badge{display:inline-block;background:#fef3c7;color:#854d0e;padding:5px 8px;border-radius:6px}
-.yes{background:#15803d}.no{background:#b91c1c}.abstain,.secondary{background:#475569}
-.award{display:block;color:#a16207;font-weight:bold;margin:8px 0}
-.results{display:flex;gap:12px;height:130px;padding:10px;border:1px solid #e2e8f0;border-radius:8px}
-.barcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px}
-.bar{width:35px;max-width:80%;border-radius:5px 5px 0 0}
-.barlabel{font-size:12px}
-footer{text-align:center;color:#64748b;padding:20px}
+.login-screen{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(140deg,#061d3a,#174a7c)}
+.login-card{background:white;padding:30px;border-radius:18px;text-align:center;width:min(420px,100%);box-shadow:0 15px 50px #0003}
+.login-card .logo{font-size:58px}
+.login-card h1{font-size:27px;margin:5px 0;color:var(--navy)}
+.login-card p{color:var(--muted)}
+footer{background:var(--navy);color:#dce5f1;padding:15px 25px;display:flex;justify-content:space-between;gap:10px;font-size:12px}
+.notice{padding:11px 13px;border-radius:9px;background:#fff3cd;color:#765a00;margin-bottom:14px;font-size:14px}
+@media(max-width:1050px){
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .columns{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+ .topbar{padding:12px;align-items:flex-start;flex-direction:column}
+ .topbar:before{left:0}
+ .brand{gap:9px}.logo{font-size:32px}.brand p{font-size:13px}
+ .userbox{align-self:flex-end}
+ .layout{grid-template-columns:1fr}
+ .sidebar{display:flex;gap:5px;overflow-x:auto;padding:8px}
+ .navbtn{width:auto;min-width:max-content;margin:0;padding:9px 12px;font-size:14px}
+ .sidebar .nav-caption{display:none}
+ .main{padding:12px}
+ .welcome{padding:18px}.welcome h2{font-size:21px}
+ .stats{gap:8px}.stat{padding:11px;gap:8px}.stat-icon{width:38px;height:38px;font-size:19px}.stat strong{font-size:21px}
+ .item-card{grid-template-columns:39px minmax(0,1fr);gap:9px;padding:12px}
+ .item-icon{width:38px;height:38px;font-size:19px}
+ .item-actions{grid-column:2;flex-direction:row;flex-wrap:wrap}
+ .form-grid{grid-template-columns:1fr}.full{grid-column:auto}
+ footer{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<header>
-<h1>মহাজোট আবাসিক সংসদ</h1>
-<p>আট সদস্য, এক আবাসন, সীমাহীন বিতর্ক।</p>
+
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="logo">🏛</div>
+    <h1>মহাজোট আবাসিক সংসদ</h1>
+    <p>আট সদস্য, এক আবাসন, সীমাহীন বিতর্ক।</p>
+    <button class="btn btn-primary" onclick="login()" style="width:100%;padding:12px">
+      Google দিয়ে লগইন
+    </button>
+    <p id="loginMessage" class="subtle"></p>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">🏛</div>
+    <div>
+      <h1>মহাজোট আবাসিক সংসদ</h1>
+      <p>আট সদস্য, এক আবাসন, সীমাহীন বিতর্ক।</p>
+    </div>
+  </div>
+  <div class="userbox">
+    <img id="userPhoto" class="avatar" alt="">
+    <div><strong id="userName">সদস্য</strong><small id="userRole">সাধারণ সদস্য</small></div>
+    <button class="btn" onclick="logout()">লগআউট</button>
+  </div>
 </header>
-<main>
-<section class="card" id="loginBox">
-<h2>সদস্য লগইন</h2>
-<button id="loginBtn">Google দিয়ে লগইন</button>
-<p id="message" class="muted"></p>
-</section>
-<section class="card hidden" id="userBox">
-<span id="userInfo"></span>
-<button id="logoutBtn" class="secondary">লগআউট</button>
-</section>
-<nav id="nav" class="hidden">
-<button data-page="home">হোম</button>
-<button data-page="proposal">প্রস্তাব</button>
-<button data-page="complaint">অভিযোগ</button>
-<button data-page="honor">সম্মাননা</button>
-<button data-page="members">সদস্য</button>
-<button data-page="admin" id="adminTab" class="hidden">অ্যাডমিন</button>
-</nav>
-<section id="home" class="page hidden">
-<div class="card">
-<h2>সংসদের নিয়ম</h2>
-<ul>
-<li>সম্মাননার প্রস্তাব জমা দিলেই ভোট শুরু হবে।</li>
-<li>সাধারণ প্রস্তাব ও অভিযোগে প্রস্তাবক বা অ্যাডমিন ভোট শুরু করবেন।</li>
-<li>সব ভোটের সময়সীমা ১২ ঘণ্টা।</li>
-<li>প্রত্যেক সদস্য একবার ভোট দিতে পারবেন।</li>
-<li>পক্ষে ভোট বিপক্ষে ভোটের চেয়ে বেশি হলে প্রস্তাব অনুমোদিত হবে; বিরত ভোট গণনায় আসবে না।</li>
-</ul>
+
+<div class="layout">
+  <aside class="sidebar">
+    <button class="navbtn active" data-page="home" onclick="showPage('home',this)">⌂　হোম</button>
+    <button class="navbtn" data-page="proposals" onclick="showPage('proposals',this)">▤　প্রস্তাব</button>
+    <button class="navbtn" data-page="complaints" onclick="showPage('complaints',this)">⚠　অভিযোগ</button>
+    <button class="navbtn" data-page="honors" onclick="showPage('honors',this)">🏆　সম্মাননা</button>
+    <button class="navbtn" data-page="members" onclick="showPage('members',this)">♟　সদস্য</button>
+    <div class="nav-caption">অ্যাডমিন মেনু</div>
+    <button id="adminNav" class="navbtn hidden" data-page="admin" onclick="showPage('admin',this)">⚙　অ্যাডমিন প্যানেল</button>
+    <button id="historyNav" class="navbtn hidden" data-page="history" onclick="showPage('history',this)">▤　লগইন হিস্ট্রি</button>
+  </aside>
+
+  <main class="main">
+    <section id="page-home" class="page">
+      <div class="welcome">
+        <h2 id="welcomeTitle">স্বাগতম!</h2>
+        <p>মহাজোট আবাসিক সংসদের কার্যক্রম</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-icon">👥</div><div><small>মোট সদস্য</small><strong id="memberCount">০</strong></div></div>
+        <div class="stat"><div class="stat-icon">📄</div><div><small>মোট প্রস্তাব</small><strong id="proposalCount">০</strong></div></div>
+        <div class="stat"><div class="stat-icon">⚠️</div><div><small>মোট অভিযোগ</small><strong id="complaintCount">০</strong></div></div>
+        <div class="stat"><div class="stat-icon">🏆</div><div><small>সম্মাননা</small><strong id="honorCount">০</strong></div></div>
+      </div>
+      <div class="columns">
+        <div>
+          <div class="panel">
+            <div class="panel-head"><h3>প্রস্তাব ও অভিযোগ</h3><button class="btn" onclick="showPage('proposals')">সব দেখুন →</button></div>
+            <div id="homeItems"></div>
+          </div>
+        </div>
+        <div>
+          <div class="panel">
+            <div class="panel-head"><h3>চলমান ভোট</h3></div>
+            <div id="activeVotes"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>সদস্য তালিকা</h3><button class="btn" onclick="showPage('members')">সব দেখুন</button></div>
+            <div id="homeMembers"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-proposals" class="page hidden">
+      <div class="panel">
+        <div class="panel-head"><h3>প্রস্তাব</h3><button class="btn-gold" onclick="openForm('proposal')">＋ নতুন প্রস্তাব</button></div>
+        <div class="tabs">
+          <button class="tab active" onclick="filterItems('proposal','all',this)">সব</button>
+          <button class="tab" onclick="filterItems('proposal','pending',this)">বিচারাধীন</button>
+          <button class="tab" onclick="filterItems('proposal','voting',this)">ভোট চলছে</button>
+          <button class="tab" onclick="filterItems('proposal','closed',this)">সিদ্ধান্ত হয়েছে</button>
+        </div>
+        <div id="proposalItems"></div>
+      </div>
+    </section>
+
+    <section id="page-complaints" class="page hidden">
+      <div class="panel">
+        <div class="panel-head"><h3>অভিযোগ</h3><button class="btn-gold" onclick="openForm('complaint')">＋ নতুন অভিযোগ</button></div>
+        <div id="complaintItems"></div>
+      </div>
+    </section>
+
+    <section id="page-honors" class="page hidden">
+      <div class="panel">
+        <div class="panel-head"><h3>সম্মাননা</h3><button id="addHonorBtn" class="btn-gold hidden" onclick="openForm('honor')">＋ সম্মাননা প্রস্তাব</button></div>
+        <div id="honorItems"></div>
+      </div>
+    </section>
+
+    <section id="page-members" class="page hidden">
+      <div class="panel"><h3>সদস্য তালিকা</h3><div id="memberItems"></div></div>
+    </section>
+
+    <section id="page-admin" class="page hidden">
+      <div class="panel">
+        <h3>অ্যাডমিন প্যানেল</h3>
+        <p class="subtle">প্রস্তাব ও অভিযোগের ভোট শুরু করার ব্যবস্থাপনা</p>
+        <div id="adminItems"></div>
+      </div>
+      <div class="panel">
+        <h3>সাম্প্রতিক লগইন হিস্ট্রি</h3>
+        <p class="subtle">পূর্ণ তালিকা দেখতে বাম পাশের “লগইন হিস্ট্রি” নির্বাচন করো।</p>
+        <div id="adminRecentHistory"></div>
+      </div>
+    </section>
+
+    <section id="page-history" class="page hidden">
+      <div class="panel">
+        <div class="panel-head"><h3>সদস্যদের লগইন হিস্ট্রি</h3><button class="btn" onclick="loadHistory()">রিফ্রেশ ↻</button></div>
+        <p class="subtle">লগইনের সময়, ইমেইল ও ব্রাউজারের তথ্য। এই পোর্টাল শুধু অ্যাডমিন দেখতে পারবে।</p>
+        <div id="historyItems"></div>
+      </div>
+    </section>
+
+    <section id="page-form" class="page hidden">
+      <div class="panel">
+        <div class="panel-head"><h3 id="formTitle">নতুন প্রস্তাব</h3><button class="btn" onclick="showPage('home')">ফিরে যাও</button></div>
+        <form id="createForm" onsubmit="submitItem(event)">
+          <div class="field"><label>শিরোনাম</label><input id="itemTitle" required maxlength="120" placeholder="শিরোনাম লিখো"></div>
+          <div class="field"><label>বিস্তারিত</label><textarea id="itemDescription" required maxlength="3000" placeholder="বিস্তারিত লিখো"></textarea></div>
+          <div id="honorRecipientField" class="field hidden"><label>সম্মাননা প্রাপক</label><select id="honorRecipient"></select></div>
+          <button class="btn btn-primary" type="submit">জমা দিন</button>
+        </form>
+      </div>
+    </section>
+  </main>
 </div>
-<div class="card">
-<h2>নতুন প্রস্তাব জমা</h2>
-<form id="createForm">
-<label>ধরন</label>
-<select id="kind">
-<option value="proposal">সাধারণ প্রস্তাব</option>
-<option value="complaint">অভিযোগ</option>
-<option value="honor">সম্মাননার প্রস্তাব</option>
-</select>
-<label>শিরোনাম</label>
-<input id="title" required maxlength="150">
-<label>বিস্তারিত</label>
-<textarea id="description" required maxlength="5000" rows="4"></textarea>
-<div id="honorFields" class="hidden">
-<label>সম্মাননা প্রাপক</label>
-<select id="recipient"></select>
-<label>সম্মাননার নাম</label>
-<input id="awardName" maxlength="100">
+
+<footer>
+  <span>🏛 মহাজোট আবাসিক সংসদ</span>
+  <span>সিস্টেম চালু আছে · <span id="footerStatus">সংযুক্ত</span></span>
+</footer>
 </div>
-<button type="submit">জমা দাও</button>
-</form>
-<p id="createMessage" class="muted"></p>
-</div>
-</section>
-<section id="proposal" class="page hidden card">
-<h2>সাধারণ প্রস্তাব</h2><div id="proposalList"></div>
-</section>
-<section id="complaint" class="page hidden card">
-<h2>অভিযোগ</h2><div id="complaintList"></div>
-</section>
-<section id="honor" class="page hidden card">
-<h2>সম্মাননা</h2><div id="honorList"></div>
-</section>
-<section id="members" class="page hidden card">
-<h2>সদস্য ও সম্মাননা</h2><div id="memberList"></div>
-</section>
-<section id="admin" class="page hidden">
-<div class="card"><h2>সদস্য তালিকা</h2><div id="adminUsers"></div></div>
-<div class="card"><h2>কার্যক্রম</h2><div id="activityList"></div></div>
-</section>
-</main>
-<footer>মহাজোট আবাসিক সংসদ</footer>
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import {getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import {getFirestore,collection,doc,getDoc,getDocs,addDoc,setDoc,updateDoc,query,orderBy,serverTimestamp,runTransaction} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {
+  getFirestore, collection, addDoc, getDocs, query, orderBy, limit,
+  doc, updateDoc, serverTimestamp, onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-const firebaseConfig={
-apiKey:"AIzaSyAdiDFEtiVjUByBvx7nMBcnqr8WQ6fPZvI",
-authDomain:"mohajot-abashik-songsod.firebaseapp.com",
-projectId:"mohajot-abashik-songsod",
-storageBucket:"mohajot-abashik-songsod.firebasestorage.app",
-messagingSenderId:"224210386175",
-appId:"1:224210386175:web:4835cafd7d4f62944a60ca",
-measurementId:"G-J40SBM8PYX"
+const firebaseConfig = {
+  apiKey: "AIzaSyAdiETFJTiVjUByBvx7nMBcnqr8WQ6fPZvI",
+  authDomain: "mohajot-abashik-songsod.firebaseapp.com",
+  projectId: "mohajot-abashik-songsod",
+  storageBucket: "mohajot-abashik-songsod.firebasestorage.app",
+  messagingSenderId: "224210386175",
+  appId: "1:224210386175:web:4835cafd7d4f62944a60ca",
+  measurementId: "G-J40SBM8PYX"
 };
-const ADMIN="sheikh.yeasin7001@gmail.com";
-const DURATION=12*60*60*1000;
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
-const provider=new GoogleAuthProvider();
-let me=null,isAdmin=false,users={};
-const $=id=>document.getElementById(id);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-function nav(page){
-document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
-$(page).classList.remove("hidden");
-refresh();
-}
-document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>nav(b.dataset.page));
-$("loginBtn").onclick=async()=>{
-try{await signInWithPopup(auth,provider)}catch(e){$("message").textContent=e.message}
-};
-$("logoutBtn").onclick=()=>signOut(auth);
-$("kind").onchange=()=>$("honorFields").classList.toggle("hidden",$("kind").value!=="honor");
+const ADMIN_EMAIL = "sheikh.yeasin7001@gmail.com";
+const VOTING_HOURS = 12;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-async function log(action){
-if(!me)return;
-try{await addDoc(collection(db,"activity"),{uid:me.uid,email:me.email,name:me.displayName||"",action,createdAt:serverTimestamp()})}catch(e){console.error(e)}
-}
-async function loadUsers(){
-users={};
-const snap=await getDocs(collection(db,"users"));
-snap.forEach(s=>users[s.id]=s.data());
-$("recipient").innerHTML=Object.entries(users).map(([id,u])=>`<option value="${esc(id)}">${esc(u.name||u.email)}</option>`).join("");
-}
-async function profile(u){
-const ref=doc(db,"users",u.uid),s=await getDoc(ref);
-if(!s.exists())await setDoc(ref,{uid:u.uid,name:u.displayName||"",email:u.email||"",createdAt:serverTimestamp(),lastLoginAt:serverTimestamp(),loginCount:1,honors:[]});
-else await updateDoc(ref,{name:u.displayName||s.data().name||"",lastLoginAt:serverTimestamp(),loginCount:(s.data().loginCount||0)+1});
-}
-$("createForm").onsubmit=async e=>{
-e.preventDefault();
-if(!me)return;
-const kind=$("kind").value;
-const item={
-kind,title:$("title").value.trim(),description:$("description").value.trim(),
-uid:me.uid,proposerName:me.displayName||me.email,
-createdAt:serverTimestamp(),votes:{},
-status:kind==="honor"?"voting":"pending",
-votingStartedAt:kind==="honor"?serverTimestamp():null
+let currentUser = null;
+let isAdmin = false;
+let items = [];
+let members = [];
+let history = [];
+let activeFormType = "proposal";
+let activeFilter = "all";
+let unsubItems = null;
+let unsubMembers = null;
+
+const $ = id => document.getElementById(id);
+const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+const dateText = value => {
+  if (!value) return "সময় পাওয়া যায়নি";
+  const d = value.toDate ? value.toDate() : new Date(value);
+  return Number.isNaN(d.getTime()) ? "সময় পাওয়া যায়নি" : d.toLocaleString("bn-BD");
 };
-if(kind==="honor"){
-item.recipientUid=$("recipient").value;
-item.awardName=$("awardName").value.trim()||item.title;
-}
-try{
-await addDoc(collection(db,"proposals"),item);
-await log("নতুন "+kind+" জমা দিয়েছেন");
-$("createForm").reset();
-$("honorFields").classList.add("hidden");
-$("createMessage").textContent=kind==="honor"?"সম্মাননার প্রস্তাব জমা হয়েছে; ভোট শুরু হয়েছে।":"প্রস্তাব জমা হয়েছে।";
-await refresh();
-}catch(err){$("createMessage").textContent="ত্রুটি: "+err.message}
+const fmt = n => Number(n || 0).toLocaleString("bn-BD");
+
+window.login = async () => {
+  $("loginMessage").textContent = "লগইন হচ্ছে…";
+  try {
+    await signInWithPopup(auth, new GoogleAuthProvider());
+  } catch (e) {
+    $("loginMessage").textContent = "লগইন করা যায়নি: " + e.message;
+  }
 };
-function votesCount(v={}){
-let a={yes:0,no:0,abstain:0};
-Object.values(v).forEach(x=>{if(a[x]!==undefined)a[x]++});
-return a;
-}
-function state(x){
-if(x.status!=="voting")return x.status;
-const t=x.votingStartedAt?.toMillis?.();
-return t&&Date.now()>=t+DURATION?"closed":"voting";
-}
-function results(v){
-const c=votesCount(v),m=Math.max(c.yes,c.no,c.abstain,1);
-return `<div class="results">
-${[["yes","পক্ষে"],["no","বিপক্ষে"],["abstain","বিরত"]].map(([k,label])=>`<div class="barcol"><b>${c[k]}</b><div class="bar ${k}" style="height:${Math.max(3,c[k]/m*70)}px"></div><span class="barlabel">${label}</span></div>`).join("")}
-</div>`;
-}
-function render(x){
-const s=state(x),c=votesCount(x.votes),total=c.yes+c.no,passed=total>0&&c.yes>c.no;
-const end=x.votingStartedAt?.toMillis?.()+DURATION;
-const myVote=x.votes?.[me.uid];
-const canStart=s==="pending"&&(isAdmin||x.uid===me.uid);
-return `<article class="card">
-<span class="badge">${s==="pending"?"বিচারাধীন":s==="voting"?"ভোট চলছে":s==="closed"?"ভোট শেষ":s==="approved"?"অনুমোদিত":"অননুমোদিত"}</span>
-<h3>${esc(x.title)}</h3><p>${esc(x.description)}</p>
-<p class="muted">প্রস্তাবক: ${esc(x.proposerName||users[x.uid]?.name||"সদস্য")}</p>
-${x.kind==="honor"?`<p>সম্মাননা প্রাপক: ${esc(users[x.recipientUid]?.name||users[x.recipientUid]?.email||"সদস্য")}</p><p>সম্মাননা: ${esc(x.awardName||x.title)}</p>`:""}
-${s==="voting"?`<p class="muted">ভোট শেষ: ${end?new Date(end).toLocaleString("bn-BD"):"সময় অপেক্ষমাণ"}</p>`:""}
-${results(x.votes)}
-${canStart?`<button data-act="start" data-id="${x.id}">ভোট শুরু (১২ ঘণ্টা)</button>`:""}
-${s==="voting"&&!myVote?`<button class="yes" data-act="vote" data-v="yes" data-id="${x.id}">পক্ষে</button><button class="no" data-act="vote" data-v="no" data-id="${x.id}">বিপক্ষে</button><button class="abstain" data-act="vote" data-v="abstain" data-id="${x.id}">বিরত</button>`:""}
-${myVote?`<p class="muted">তোমার ভোট: ${myVote==="yes"?"পক্ষে":myVote==="no"?"বিপক্ষে":"বিরত"}</p>`:""}
-${s==="closed"?`<b>${passed?"ভোটের ফল: পক্ষে সংখ্যাগরিষ্ঠতা":"ভোটের ফল: পক্ষে সংখ্যাগরিষ্ঠতা নেই"}</b>`:""}
-${isAdmin&&s==="voting"?`<button class="secondary" data-act="close" data-id="${x.id}">ভোট বন্ধ</button>`:""}
-</article>`;
-}
-async function refresh(){
-if(!me)return;
-try{
-await loadUsers();
-const snap=await getDocs(query(collection(db,"proposals"),orderBy("createdAt","desc")));
-const items=snap.docs.map(d=>({id:d.id,...d.data()}));
-for(const [kind,id] of [["proposal","proposalList"],["complaint","complaintList"],["honor","honorList"]]){
-const list=items.filter(x=>x.kind===kind);
-$(id).innerHTML=list.map(render).join("")||"<p>এখনো কোনো তথ্য নেই।</p>";
-}
-const awards=items.filter(x=>x.kind==="honor"&&state(x)==="closed"&&votesCount(x.votes).yes>votesCount(x.votes).no&&votesCount(x.votes).yes+votesCount(x.votes).no>0);
-$("memberList").innerHTML=Object.entries(users).map(([id,u])=>`<div class="card"><b>${esc(u.name||u.email)}</b>${awards.filter(a=>a.recipientUid===id).map(a=>`<span class="award">🏅 বিশেষ সম্মাননা: ${esc(a.awardName||a.title)}</span>`).join("")}</div>`).join("");
-if(isAdmin)await adminData();
-}catch(e){console.error(e);$("message").textContent="তথ্য লোড করা যায়নি: "+e.message}
-}
-document.addEventListener("click",async e=>{
-const b=e.target.closest("[data-act]");if(!b||!me)return;
-const ref=doc(db,"proposals",b.dataset.id),act=b.dataset.act;
-try{
-await runTransaction(db,async tx=>{
-const s=await tx.get(ref);if(!s.exists())throw Error("তথ্য পাওয়া যায়নি");
-const x=s.data();
-if(act==="start"){
-if(!(isAdmin||x.uid===me.uid)||x.status!=="pending")throw Error("ভোট শুরু করার অনুমতি নেই");
-tx.update(ref,{status:"voting",votingStartedAt:serverTimestamp()});
-}else if(act==="vote"){
-if(x.status!=="voting"||!x.votingStartedAt)throw Error("ভোট চলছে না");
-if(Date.now()>=x.votingStartedAt.toMillis()+DURATION)throw Error("১২ ঘণ্টা শেষ");
-if(x.votes?.[me.uid])throw Error("তুমি ইতিমধ্যে ভোট দিয়েছ");
-tx.update(ref,{[`votes.${me.uid}`]:b.dataset.v});
-}else if(act==="close"){
-if(!isAdmin||x.status!=="voting")throw Error("ভোট বন্ধ করার অনুমতি নেই");
-tx.update(ref,{status:"closed"});
-}
+window.logout = async () => { await signOut(auth); };
+window.showPage = (name, button) => {
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
+  $("page-" + name)?.classList.remove("hidden");
+  document.querySelectorAll(".navbtn").forEach(b => b.classList.remove("active"));
+  if (button) button.classList.add("active");
+  else document.querySelector(`[data-page="${name}"]`)?.classList.add("active");
+  if (name === "history") loadHistory();
+  if (name === "admin") renderAdmin();
+};
+window.openForm = type => {
+  activeFormType = type;
+  $("createForm").reset();
+  $("formTitle").textContent = type === "complaint" ? "নতুন অভিযোগ" :
+    type === "honor" ? "সম্মাননা প্রস্তাব" : "নতুন প্রস্তাব";
+  $("honorRecipientField").classList.toggle("hidden", type !== "honor");
+  $("honorRecipient").innerHTML = members.map(m =>
+    `<option value="${esc(m.uid)}">${esc(m.name)}</option>`).join("");
+  showPage("form");
+};
+window.filterItems = (type, filter, button) => {
+  activeFilter = filter;
+  button.parentElement.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+  renderItems(type);
+};
+window.submitItem = async event => {
+  event.preventDefault();
+  if (!currentUser) return;
+  const title = $("itemTitle").value.trim();
+  const description = $("itemDescription").value.trim();
+  const type = activeFormType;
+  try {
+    await addDoc(collection(db, "items"), {
+      title, description, type,
+      authorUid: currentUser.uid,
+      authorName: currentUser.displayName || currentUser.email,
+      authorEmail: currentUser.email,
+      recipientUid: type === "honor" ? $("honorRecipient").value : null,
+      status: type === "honor" ? "pending" : "pending",
+      votes: {},
+      createdAt: serverTimestamp(),
+      votingStartedAt: null,
+      votingEndsAt: null,
+      result: null
+    });
+    alert("জমা হয়েছে।");
+    showPage(type === "complaint" ? "complaints" : type === "honor" ? "honors" : "proposals");
+  } catch (e) {
+    alert("জমা দেওয়া যায়নি। Firebase Rules পরীক্ষা করো।\n" + e.message);
+  }
+};
+
+onAuthStateChanged(auth, async user => {
+  currentUser = user;
+  if (!user) {
+    $("app").classList.add("hidden");
+    $("loginScreen").classList.remove("hidden");
+    if (unsubItems) unsubItems();
+    if (unsubMembers) unsubMembers();
+    return;
+  }
+  isAdmin = user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  $("loginScreen").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  $("userName").textContent = user.displayName || user.email;
+  $("userRole").textContent = isAdmin ? "অ্যাডমিন" : "সাধারণ সদস্য";
+  $("welcomeTitle").textContent = "স্বাগতম, " + (user.displayName || "সদস্য");
+  $("userPhoto").src = user.photoURL || "";
+  $("adminNav").classList.toggle("hidden", !isAdmin);
+  $("historyNav").classList.toggle("hidden", !isAdmin);
+  $("addHonorBtn").classList.toggle("hidden", !isAdmin);
+
+  // Login event. Firestore Rules must restrict history reads to the admin.
+  try {
+    await addDoc(collection(db, "loginHistory"), {
+      uid: user.uid,
+      name: user.displayName || "",
+      email: user.email || "",
+      photoURL: user.photoURL || "",
+      loginAt: serverTimestamp(),
+      userAgent: navigator.userAgent
+    });
+  } catch (e) {
+    console.warn("Login history could not be saved:", e.message);
+  }
+
+  startListeners();
 });
-await log(act==="vote"?"ভোট দিয়েছেন":act==="start"?"ভোট শুরু করেছেন":"ভোট বন্ধ করেছেন");
-await refresh();
-}catch(err){alert(err.message)}
-});
-async function adminData(){
-$("adminUsers").innerHTML=Object.values(users).map(u=>`<p>${esc(u.name||u.email)} — ${esc(u.email)}</p>`).join("");
-const s=await getDocs(query(collection(db,"activity"),orderBy("createdAt","desc")));
-$("activityList").innerHTML=s.docs.slice(0,80).map(d=>{const x=d.data();return `<p>${esc(x.name||x.email)} — ${esc(x.action)}</p>`}).join("");
+
+function startListeners() {
+  if (unsubItems) unsubItems();
+  if (unsubMembers) unsubMembers();
+
+  unsubItems = onSnapshot(query(collection(db, "items"), orderBy("createdAt", "desc")),
+    snapshot => {
+      items = snapshot.docs.map(d => ({id:d.id, ...d.data()}));
+      renderAll();
+      autoCloseExpiredVotes();
+    }, error => {
+      console.error(error);
+      $("footerStatus").textContent = "ডেটা অনুমতি পরীক্ষা প্রয়োজন";
+    });
+
+  unsubMembers = onSnapshot(collection(db, "members"), snapshot => {
+    members = snapshot.docs.map(d => ({id:d.id, ...d.data()}));
+    if (!members.some(m => m.uid === currentUser.uid)) {
+      addDoc(collection(db, "members"), {
+        uid: currentUser.uid,
+        name: currentUser.displayName || currentUser.email,
+        email: currentUser.email || "",
+        photoURL: currentUser.photoURL || "",
+        joinedAt: serverTimestamp()
+      }).catch(console.error);
+    }
+    renderAll();
+  }, error => console.warn("Member list:", error.message));
 }
-onAuthStateChanged(auth,async u=>{
-me=u;
-if(!u){
-$("loginBox").classList.remove("hidden");$("userBox").classList.add("hidden");$("nav").classList.add("hidden");
-document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));return;
+
+function renderAll() {
+  const proposals = items.filter(i => i.type === "proposal");
+  const complaints = items.filter(i => i.type === "complaint");
+  const honors = items.filter(i => i.type === "honor" && i.status === "approved");
+  $("memberCount").textContent = fmt(Math.max(members.length, 1));
+  $("proposalCount").textContent = fmt(proposals.length);
+  $("complaintCount").textContent = fmt(complaints.length);
+  $("honorCount").textContent = fmt(honors.length);
+  renderItems("proposal");
+  renderItems("complaint");
+  renderItems("honor");
+  renderVotes();
+  renderMembers();
+  renderAdmin();
 }
-isAdmin=(u.email||"").toLowerCase()===ADMIN.toLowerCase();
-$("loginBox").classList.add("hidden");$("userBox").classList.remove("hidden");$("nav").classList.remove("hidden");
-$("adminTab").classList.toggle("hidden",!isAdmin);$("userInfo").textContent=u.displayName||u.email;
-try{await profile(u);await log("লগইন করেছেন");await loadUsers();nav("home")}catch(e){$("message").textContent=e.message}
-});
-setInterval(()=>{if(me)refresh()},60000);
+
+function statusLabel(item) {
+  if (item.status === "voting") return ["ভোট চলছে","gold"];
+  if (item.status === "approved") return ["অনুমোদিত","green"];
+  if (item.status === "rejected") return ["অননুমোদিত","red"];
+  if (item.status === "closed") return [item.result === "passed" ? "অনুমোদিত" : "অননুমোদিত", item.result === "passed" ? "green" : "red"];
+  return ["বিচারাধীন",""];
+}
+
+function voteCounts(item) {
+  const values = Object.values(item.votes || {});
+  return {
+    yes: values.filter(v => v === "yes").length,
+    no: values.filter(v => v === "no").length,
+    abstain: values.filter(v => v === "abstain").length
+  };
+}
+
+function itemCard(item) {
+  const [label, cls] = statusLabel(item);
+  const icon = item.type === "complaint" ? "⚠️" : item.type === "honor" ? "🏆" : "📄";
+  const counts = voteCounts(item);
+  const canStart = isAdmin && item.status === "pending" && item.type !== "honor";
+  const ownVote = item.votes?.[currentUser?.uid];
+  return `<article class="item-card">
+    <div class="item-icon">${icon}</div>
+    <div>
+      <h4>${esc(item.title)}</h4>
+      <p>${esc(item.description)}</p>
+      <div class="item-meta">প্রস্তাবক: ${esc(item.authorName || "সদস্য")} · ${esc(dateText(item.createdAt))}</div>
+      ${item.status === "voting" ? `<div class="subtle" style="margin-top:8px">পক্ষে ${fmt(counts.yes)} · বিপক্ষে ${fmt(counts.no)} · বিরত ${fmt(counts.abstain)}</div>` : ""}
+      ${item.type === "honor" && item.status === "approved" ? `<span class="status gold">🏆 সম্মাননা অনুমোদিত</span>` : ""}
+    </div>
+    <div class="item-actions">
+      <span class="status ${cls}">${label}</span>
+      ${item.status === "voting" ? `<button class="btn btn-primary" onclick="vote('${item.id}','yes')" ${ownVote ? "disabled" : ""}>পক্ষে</button>
+      <button class="btn" onclick="vote('${item.id}','no')" ${ownVote ? "disabled" : ""}>বিপক্ষে</button>
+      <button class="btn" onclick="vote('${item.id}','abstain')" ${ownVote ? "disabled" : ""}>বিরত</button>
+      <small class="subtle">${ownVote ? "তোমার ভোট দেওয়া হয়েছে" : timeRemaining(item)}</small>` : ""}
+      ${canStart ? `<button class="btn btn-primary" onclick="startVote('${item.id}')">ভোট শুরু</button>` : ""}
+      ${isAdmin && item.type === "honor" && item.status === "pending" ? `<button class="btn-gold" onclick="approveHonor('${item.id}')">অনুমোদন</button>` : ""}
+      ${isAdmin && item.status === "pending" && item.type !== "honor" ? "" : ""}
+    </div>
+  </article>`;
+}
+
+function renderItems(type) {
+  const target = type === "proposal" ? "proposalItems" : type === "complaint" ? "complaintItems" : "honorItems";
+  let list = items.filter(i => i.type === type);
+  if (type === "proposal" && activeFilter !== "all") {
+    if (activeFilter === "pending") list = list.filter(i => i.status === "pending");
+    if (activeFilter === "voting") list = list.filter(i => i.status === "voting");
+    if (activeFilter === "closed") list = list.filter(i => ["closed","approved","rejected"].includes(i.status));
+  }
+  if (type === "honor") list = list.filter(i => isAdmin || i.status === "approved" || i.authorUid === currentUser?.uid);
+  $(target).innerHTML = list.length ? list.map(itemCard).join("") : `<div class="empty">এখনো কিছু নেই।</div>`;
+  if (type === "proposal") $("homeItems").innerHTML = items.filter(i => i.type !== "honor").slice(0,5).map(itemCard).join("") || `<div class="empty">এখনো কোনো প্রস্তাব বা অভিযোগ নেই।</div>`;
+}
+
+function renderVotes() {
+  const list = items.filter(i => i.status === "voting");
+  $("activeVotes").innerHTML = list.length ? list.map(item => {
+    const c = voteCounts(item);
+    const total = c.yes + c.no + c.abstain || 1;
+    return `<div style="margin-bottom:16px">
+      <strong>${esc(item.title)}</strong>
+      <div class="vote-row"><span>🟢 পক্ষে</span><div class="bar"><span style="width:${c.yes/total*100}%;background:#168b63"></span></div><b>${c.yes}</b></div>
+      <div class="vote-row"><span>🔴 বিপক্ষে</span><div class="bar"><span style="width:${c.no/total*100}%;background:#dc3545"></span></div><b>${c.no}</b></div>
+      <div class="vote-row"><span>⚪ বিরত</span><div class="bar"><span style="width:${c.abstain/total*100}%;background:#8296b1"></span></div><b>${c.abstain}</b></div>
+      <small class="subtle">${timeRemaining(item)}</small>
+    </div><hr style="border:0;border-top:1px solid var(--border)">`;
+  }).join("") : `<div class="empty">এখন কোনো ভোট চলছে না।</div>`;
+}
+
+function renderMembers() {
+  const list = members;
+  const html = list.map(m => `<div class="member">
+    <img src="${esc(m.photoURL || "")}" alt="">
+    <div class="member-info"><strong>${esc(m.name || "সদস্য")}</strong><small>${esc(m.email || "")}</small></div>
+    ${m.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase() ? `<span class="status gold">অ্যাডমিন</span>` : ""}
+  </div>`).join("") || `<div class="empty">সদস্য তালিকা লোড হচ্ছে…</div>`;
+  $("memberItems").innerHTML = html;
+  $("homeMembers").innerHTML = list.slice(0,7).map(m => `<div class="member">
+    <img src="${esc(m.photoURL || "")}" alt="">
+    <div class="member-info"><strong>${esc(m.name || "সদস্য")}</strong><small>${m.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase() ? "অ্যাডমিন" : "সাধারণ সদস্য"}</small></div>
+  </div>`).join("") || `<div class="empty">সদস্য নেই</div>`;
+}
+
+function renderAdmin() {
+  if (!isAdmin) return;
+  const list = items.filter(i => i.status === "pending" && i.type !== "honor");
+  $("adminItems").innerHTML = list.length ? list.map(itemCard).join("") : `<div class="empty">বিচারাধীন কোনো প্রস্তাব নেই।</div>`;
+}
+
+function timeRemaining(item) {
+  const end = item.votingEndsAt?.toDate ? item.votingEndsAt.toDate() : new Date(item.votingEndsAt || 0);
+  if (!item.votingEndsAt || Number.isNaN(end.getTime())) return "১২ ঘণ্টার ভোট";
+  const ms = end.getTime() - Date.now();
+  if (ms <= 0) return "সময় শেষ";
+  const h = Math.floor(ms / 3600000), m = Math.floor(ms % 3600000 / 60000);
+  return `বাকি ${h} ঘণ্টা ${m} মিনিট`;
+}
+
+window.startVote = async id => {
+  if (!isAdmin) return alert("শুধু অ্যাডমিন ভোট শুরু করতে পারবেন।");
+  const item = items.find(i => i.id === id);
+  if (!item || item.status !== "pending") return;
+  const started = new Date();
+  const ends = new Date(started.getTime() + VOTING_HOURS * 3600000);
+  try {
+    await updateDoc(doc(db,"items",id), {
+      status:"voting",
+      votingStartedAt: started,
+      votingEndsAt: ends
+    });
+  } catch (e) { alert("ভোট শুরু করা যায়নি: " + e.message); }
+};
+
+window.vote = async (id, choice) => {
+  const item = items.find(i => i.id === id);
+  if (!item || item.status !== "voting") return alert("এই ভোট এখন চালু নেই।");
+  if (item.votes?.[currentUser.uid]) return alert("তুমি ইতিমধ্যে ভোট দিয়েছ।");
+  const end = item.votingEndsAt?.toDate ? item.votingEndsAt.toDate() : new Date(item.votingEndsAt);
+  if (Date.now() >= end.getTime()) return alert("ভোটের সময় শেষ।");
+  try {
+    // Firestore Rules must enforce one vote per member and valid vote values.
+    await updateDoc(doc(db,"items",id), {
+      [`votes.${currentUser.uid}`]: choice
+    });
+  } catch (e) { alert("ভোট দেওয়া যায়নি। Firebase Rules পরীক্ষা করো।\n" + e.message); }
+};
+
+window.approveHonor = async id => {
+  if (!isAdmin) return;
+  try {
+    await updateDoc(doc(db,"items",id), {status:"approved", approvedAt:serverTimestamp()});
+  } catch (e) { alert("অনুমোদন করা যায়নি: " + e.message); }
+};
+
+async function autoCloseExpiredVotes() {
+  if (!isAdmin) return;
+  for (const item of items) {
+    if (item.status !== "voting" || !item.votingEndsAt) continue;
+    const end = item.votingEndsAt.toDate ? item.votingEndsAt.toDate() : new Date(item.votingEndsAt);
+    if (Date.now() < end.getTime()) continue;
+    const c = voteCounts(item);
+    const result = c.yes + c.no > 0 && c.yes / (c.yes + c.no) > 0.5 ? "passed" : "failed";
+    try {
+      await updateDoc(doc(db,"items",item.id), {
+        status:"closed", result, closedAt:serverTimestamp(),
+        finalVotes:{yes:c.yes,no:c.no,abstain:c.abstain}
+      });
+    } catch (e) { console.warn("Could not close vote:",e.message); }
+  }
+}
+
+window.loadHistory = async () => {
+  if (!isAdmin) return;
+  $("historyItems").innerHTML = `<div class="empty">লোড হচ্ছে…</div>`;
+  try {
+    const snap = await getDocs(query(collection(db,"loginHistory"),orderBy("loginAt","desc"),limit(100)));
+    history = snap.docs.map(d => ({id:d.id,...d.data()}));
+    renderHistory();
+  } catch (e) {
+    $("historyItems").innerHTML = `<div class="notice">লগইন হিস্ট্রি দেখা যাচ্ছে না। Firestore Rules-এ অ্যাডমিনের read অনুমতি আছে কি না পরীক্ষা করো।</div>`;
+  }
+};
+
+function renderHistory() {
+  const html = `<div class="table-wrap"><table><thead><tr>
+    <th>সদস্য</th><th>ইমেইল</th><th>লগইন সময়</th><th>ডিভাইস / ব্রাউজার তথ্য</th>
+  </tr></thead><tbody>${history.map(h => `<tr>
+    <td>${esc(h.name || "সদস্য")}</td>
+    <td>${esc(h.email || "")}</td>
+    <td>${esc(dateText(h.loginAt))}</td>
+    <td style="max-width:280px;overflow-wrap:anywhere">${esc(h.userAgent || "অজানা")}</td>
+  </tr>`).join("")}</tbody></table></div>`;
+  $("historyItems").innerHTML = html;
+  $("adminRecentHistory").innerHTML = history.slice(0,5).length ?
+    `<div class="table-wrap"><table><thead><tr><th>সদস্য</th><th>লগইন সময়</th></tr></thead><tbody>` +
+    history.slice(0,5).map(h => `<tr><td>${esc(h.name || h.email)}</td><td>${esc(dateText(h.loginAt))}</td></tr>`).join("") +
+    `</tbody></table></div>` : `<div class="empty">লগইন রেকর্ড নেই।</div>`;
+}
+
+$("footerStatus").textContent = "Firebase সংযোগ সক্রিয়";
 </script>
 </body>
 </html>
